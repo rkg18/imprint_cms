@@ -3,7 +3,6 @@
 import os
 
 from flask import Flask
-from flask_sqlalchemy import SQLAlchemy # Database connection
 
 """ Creates and Configures Application """
 def create_app(test_config=None):
