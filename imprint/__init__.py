@@ -20,8 +20,12 @@ def create_app(test_config=None):
     def hello():
         return '<h1> Hello World </h1>'
 
-    # Adds DB to app
+    """ Adding Database to 'app' """
     from . import db
     db.init_app(app)
+
+    """ Adding Authroization to 'app' """
+    from . import auth
+    app.register_blueprint(auth.bp)
 
     return app
