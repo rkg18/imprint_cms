@@ -1,12 +1,8 @@
 import sqlite3
+
 import click
-
-import pdb
-
 from flask import current_app, g
 from flask.cli import with_appcontext
-
-#pdb.set_trace() # Debug Start
 
 """ Get Database """
 def get_db():
