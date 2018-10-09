@@ -1,48 +1,53 @@
-""" Blueprint for Authorizing (Login and Register) a User """
 import functools
-from flask import (Blueprint, flash, g, redirect, render_template, request, session, url_for)
+
+from flask import (
+    Blueprint, flash, g, redirect, render_template, request, session, url_for
+)
+
+# security modules
 from werkzeug.security import check_password_hash, generate_password_hash
 
-from imprint.db import get_db # calls functions for database
+from imprint.db import get_db
 
-""" Creates instance of blueprint object """
-bp = Blueprint('auth',__name__,url_prefix='/auth')
+bp = Blueprint('auth',__name__, url_prefix='/auth')
 
-@bp.route('/register', method=('GET','POST'))
+""" Register function to input info """
+@bp.route('/register', methods=('GET', 'POST'))
 def register():
     if request.method == 'POST':
         email = request.form['email']
         username = request.form['username']
         password = request.form['password']
 
-        db = get_db() # Calls from DB module
+        db = get_db()
 
-        error = None # placeholder variable for error messages
+        error = None
 
-        # Validates user input
         if not email:
-            error = 'Email is required'
+            error = "Email is required"
         elif not username:
-            error = 'Username is required'
+            error = 'Username is required.'
         elif not password:
-            error = 'Password is required'
-        elif db.execute('SELECT id FROM user WHERE username = ?', (username,)).fetchone() is not None:
-            error = 'User {} is alraedy registered'.format(username)
+            error = 'Password is required.'
+        elif db.execute(
+            'SELECT id FROM user WHERE email = ?', (username,)
+        ).fetchone() is not None:
+            error = 'User {} is already registered.'.format(username)
 
-        # if all info is valid then add to database table 'user'
         if error is None:
             db.execute(
                 'INSERT INTO user (email, username, password) VALUES (?, ?, ?)',
-                (username, generate_password_hash(password))
+                (email, username, generate_password_hash(password))
             )
+
             db.commit()
+
             return redirect(url_for('auth.login'))
 
         flash(error)
 
     return render_template('auth/register.html')
 
-""" User only needs user and password to login """
 @bp.route('/login', methods=('GET', 'POST'))
 def login():
     if request.method == 'POST':
@@ -71,8 +76,7 @@ def login():
 
     return render_template('auth/login.html')
 
-""" allows user to stay log in with relevant information """
-@bp.before_app_request # this is what does it
+@bp.before_app_request
 def load_logged_in_user():
     user_id = session.get('user_id')
 
@@ -83,13 +87,11 @@ def load_logged_in_user():
             'SELECT * FROM user WHERE id = ?', (user_id,)
         ).fetchone()
 
-""" Clears session """
 @bp.route('/logout')
 def logout():
     session.clear()
     return redirect(url_for('index'))
 
-""" Needs to be loggined in for desired view """
 def login_required(view):
     @functools.wraps(view)
     def wrapped_view(**kwargs):
