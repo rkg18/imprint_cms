@@ -38,12 +38,7 @@ def add_post():
             flash(error)
         else:
             db = get_db()
-            db.execute(
-                'INSERT INTO posts (title, body, url)'
-                ' VALUES (?, ?, ?)',
-                (title, body, url)
-            )
-            
+            db.execute("INSERT INTO posts (title, body, url) VALUES (?,?,?)",(title,body,url))
             db.commit()
 
             return redirect(url_for('blog.blog_index'))
