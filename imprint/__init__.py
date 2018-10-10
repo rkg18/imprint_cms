@@ -29,4 +29,8 @@ def create_app(test_config=None):
     from . import auth
     app.register_blueprint(auth.bp)
 
+    """ Adding admin dashboard panel """
+    from . import dashboard
+    app.register_blueprint(dashboard.bp)
+
     return app
