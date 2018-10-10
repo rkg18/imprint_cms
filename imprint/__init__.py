@@ -3,6 +3,7 @@
 import os
 
 from flask import Flask
+from flask import render_template
 
 """ Creates and Configures Application """
 def create_app(test_config=None):
@@ -18,7 +19,7 @@ def create_app(test_config=None):
     # a simple page that says hello
     @app.route('/')
     def hello():
-        return '<h1> Hello World </h1>'
+        return  render_template('index.html')
 
     """ Adding Database to 'app' """
     from . import db
