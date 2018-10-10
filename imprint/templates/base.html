@@ -14,7 +14,7 @@
   <div class="collapse navbar-collapse" id="navbarNav">
     <ul class="navbar-nav">
       {% if g.user %}
-        <li class="nav-item">{{ g.user['username'] }}
+        <li class="nav-item"> Hi, {{ g.user['username'] }}!
         <li class="nav-item"><a class="nav-link" href="{{ url_for('dashboard.admin') }}">Dashboard</a>
         <li class="nav-item"><a class="nav-link" href="{{ url_for('auth.logout') }}">Log Out</a>
       {% else %}
