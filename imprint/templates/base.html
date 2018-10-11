@@ -1,5 +1,5 @@
 <!doctype html>
-<title>{% block title %}{% endblock %} - Imprint </title>
+<title>{% block title %}{% endblock %} | Imprint </title>
 <!--<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">-->
 
 <!-- Bootstrap CSS -->
@@ -34,7 +34,9 @@
   {% for message in get_flashed_messages() %}
     <div class="flash">{{ message }}</div>
   {% endfor %}
-  {% block content %}{% endblock %}
+  <div class = "container">
+    {% block content %}{% endblock %}
+  </div>
 </section>
 
 <!-- Optional JavaScript -->
