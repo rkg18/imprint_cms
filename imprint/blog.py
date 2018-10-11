@@ -11,7 +11,7 @@ bp = Blueprint('blog', __name__)
 def blog_index():
     db = get_db()
     posts = db.execute(
-        'SELECT title, url, body, created'
+        'SELECT post_id, title, url, body, created'
         ' FROM posts'
         ' ORDER BY created DESC'
     ).fetchall()
@@ -45,8 +45,18 @@ def add_post():
 
     return render_template('blog/add_post.html')
 
-@bp.route('/blog/<slug>',methods=('GET','POST'))
+""" Individual Post Page """
+def get_post(id):
+    post = get_db().execute('SELECT post_id, title, body, url FROM posts WHERE post_id=?',(id,)).fetchone()
+
+    if post is None:
+        abort(404, "Post id {0} doesn't exist.".format(id))
+
+    return post
+
+@bp.route('/blog/<int:id>',methods=('GET','POST'))
 @login_required
-def post(slug, post_id):
-    #post = get_post(post_id)
-    pass
+def post(id):
+    post = get_post(id)
+
+    return render_template('blog/post.html', post = post)
