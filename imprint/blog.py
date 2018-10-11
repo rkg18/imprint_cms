@@ -58,5 +58,4 @@ def get_post(id):
 @login_required
 def post(id, slug):
     post = get_post(id)
-
     return render_template('blog/post.html', post = post)
