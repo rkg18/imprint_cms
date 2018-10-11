@@ -44,3 +44,9 @@ def add_post():
             return redirect(url_for('blog.blog_index'))
 
     return render_template('blog/add_post.html')
+
+@bp.route('/blog/<slug>',methods=('GET','POST'))
+@login_required
+def post(slug, post_id):
+    #post = get_post(post_id)
+    pass
