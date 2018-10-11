@@ -54,9 +54,9 @@ def get_post(id):
 
     return post
 
-@bp.route('/blog/<int:id>',methods=('GET','POST'))
+@bp.route('/blog/<int:id>/<slug>',methods=('GET','POST'))
 @login_required
-def post(id):
+def post(id, slug):
     post = get_post(id)
 
     return render_template('blog/post.html', post = post)
