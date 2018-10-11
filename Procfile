@@ -1,1 +1,1 @@
-web: gunicorn imprint:app
+web: gunicorn "imprint:create_app()"
