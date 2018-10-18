@@ -3,7 +3,47 @@
 {% block title %} Dashboard {% endblock %}
 
 {% block content %}
-<div class = "container">
+<div class = "container mt-4">
+  <div class ="row">
+    <div class="card-deck mb-3 text-center col-lg-4">
+      <div class="card mb-4 shadow-sm">
+        <div class="card-header">
+          <h4> Add Page </h4>
+        </div>
+        <div class ="card-body">
+          <p> Add a Landing Page, Product Page, or Content Page </p>
+        </div>
+        <a href="{{ url_for('blog.add_post') }}" class="button"> Add Page </a>
+      </div>
+    </div>
+
+    <div class="card-deck mb-3 text-center col-lg-4">
+      <div class="card mb-4 shadow-sm">
+        <div class="card-header">
+          <h4> Settings </h4>
+        </div>
+        <div class ="card-body">
+          <p> Edits settings and apperance of the website</p>
+        </div>
+        <a href="#" class="button"> Settings </a>
+      </div>
+    </div>
+
+    <div class="card-deck mb-3 text-center col-lg-4">
+      <div class="card mb-4 shadow-sm">
+        <div class="card-header">
+          <h4> Quickstart </h4>
+        </div>
+        <div class ="card-body">
+          <p> Sets up a basic website template to get you started </p>
+        </div>
+        <a href="#" class="button"> Quick Start</a>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}
+<!--
   <div class ="row">
     <div class ="col-lg-4">
       <p> <a href="{{ url_for('blog.add_post') }}"> Add Page </a> </p>
@@ -13,7 +53,7 @@
     </div
     <div class ="col-lg-4">
       <p> Generate </p>
-    </div
+    </div>
   </div>
 </div>
-{% endblock %}
+-->
