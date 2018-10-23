@@ -8,12 +8,12 @@
     <div class="card-deck mb-3 text-center col-lg-4">
       <div class="card mb-4 shadow-sm">
         <div class="card-header">
-          <h4> Add Page </h4>
+          <h4> Add Blog Post </h4>
         </div>
         <div class ="card-body">
-          <p> Add a Landing Page, Product Page, or Content Page </p>
+          <p> Add a Blog Post </p>
         </div>
-        <a href="{{ url_for('blog.add_post') }}" class="button"> Add Page </a>
+        <a href="{{ url_for('blog.add_post') }}" class="button"> Add Post </a>
       </div>
     </div>
 
@@ -41,19 +41,43 @@
       </div>
     </div>
   </div>
-</div>
-{% endblock %}
-<!--
-  <div class ="row">
-    <div class ="col-lg-4">
-      <p> <a href="{{ url_for('blog.add_post') }}"> Add Page </a> </p>
-    </div>
-    <div class ="col-lg-4">
-      <p> Settings </p>
-    </div
-    <div class ="col-lg-4">
-      <p> Generate </p>
+
+  <!-- Row 2 -->
+  <div class="card-deck mb-3 text-center col-lg-4">
+    <div class="card mb-4 shadow-sm">
+      <div class="card-header">
+        <h4> Add Page </h4>
+      </div>
+      <div class ="card-body">
+        <p> Add a Landing Page, Product Page, Content Page </p>
+      </div>
+      <a href="#" class="button"> Add Page </a>
     </div>
   </div>
+
+    <div class="card-deck mb-3 text-center col-lg-4">
+      <div class="card mb-4 shadow-sm">
+        <div class="card-header">
+          <h4> FEATURE </h4>
+        </div>
+        <div class ="card-body">
+          <p> Feature Description HERE </p>
+        </div>
+        <a href="#" class="button"> add Feature </a>
+      </div>
+    </div>
+
+    <div class="card-deck mb-3 text-center col-lg-4">
+      <div class="card mb-4 shadow-sm">
+        <div class="card-header">
+          <h4> FEATURE </h4>
+        </div>
+        <div class ="card-body">
+          <p> Feature Description HERE </p>
+        </div>
+        <a href="#" class="button"> add Feature </a>
+      </div>
+    </div>
+
 </div>
--->
+{% endblock %}
