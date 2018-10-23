@@ -5,7 +5,7 @@ from flask import (
 from imprint.db import get_db
 from imprint.auth import login_required
 
-bp = Blueprint('Page', __name__)
+bp = Blueprint('page', __name__)
 
 @bp.route('/landing-page', methods=('GET','POST'))
 def landing_page():
@@ -31,8 +31,10 @@ def landing_page():
             # db = get_db()
             # db.execute("INSERT INTO posts (title, body, url) VALUES (?,?,?)",(title,body,url))
             # db.commit()
-
+            pass
             # return redirect(url_for('blog.blog_index'))
+    else:
+        return render_template('page/add_page.html')
 
 @bp.route('/product-page')
 def product_page():
