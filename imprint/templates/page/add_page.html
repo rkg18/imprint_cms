@@ -3,23 +3,36 @@
 {% block title%} New Page {% endblock %}
 
 {% block content %}
-  <form method="POST">
+<div class="row mt-4">
+  <div class="col-md-10 offset-md-1">
+    <form method="POST">
 
-    <select name="page-types">
-      <option value="landing-page"> Landing Page </option>
-      <option value="product-page"> Product Page </option>
-    </select>
+      <div class="form-group"
+        <label for="page-type"> Page Types </label>
+        <select class="form-control" name="page-types">
+          <option value="landing-page"> Landing Page </option>
+          <option value="product-page"> Product Page </option>
+        </select>
+      </div>
 
-    <label for="heading">Heading</label>
-    <input name="heading" id="heading" required>
+      <div class="form-group">
+        <label for="heading">Heading</label>
+        <input name="heading" id="heading" required>
+      </div>
 
-    <label for="subheading">Sub-heading</label>
-    <input name="subheading" id="subheading" required>
+      <div class="form-group">
+        <label for="subheading">Sub-heading</label>
+        <input name="subheading" id="subheading" required>
+      </div>
 
-    <label for="button-text">Button Text</label>
-    <input name="button-text" id="button-text" required>
+      <div class="form-group">
+        <label for="button-text">Button Text</label>
+        <input name="button-text" id="button-text" required>
+      </div>
 
-    <input type="submit" value="Save">
+      <input type="submit" value="Save">
 
-  </form>
+    </form>
+  </div>
+</div>
 {% endblock %}
