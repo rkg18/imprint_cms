@@ -3,18 +3,30 @@
 {% block title%} New Post {% endblock %}
 
 {% block content %}
-  <form method="POST">
-    
-    <label for="title">Title</label>
-    <input name="title" id="title" value="{{ request.form['title'] }}" required>
+<div class="row mt-4">
+  <div class="col-md-10 offset-md-1">
 
-    <label for="url"> URL </label>
-    <input name="url" id="url" value="{{ request.form['url'] }}" required>
+    <form method="POST">
 
-    <label for="body">Body</label>
-    <textarea name="body" id="body">{{ request.form['body'] }}</textarea>
+      <div class="form-group">
+        <label for="title">Title</label>
+        <input name="title" class="form-control" id="title" value="{{ request.form['title'] }}" required>
+      </div>
 
-    <input type="submit" value="Save">
+      <div class="form-group">
+        <label for="url"> URL </label>
+        <input name="url" class="form-control" id="url" value="{{ request.form['url'] }}" required>
+      </div>
 
-  </form>
+      <div class="form-group">
+        <label for="body">Body</label>
+        <textarea name="body" class="form-control" id="body">{{ request.form['body'] }}</textarea>
+      </div>
+
+      <input type="submit" value="Save">
+
+    </form>
+
+  </div>
+</div>
 {% endblock %}
