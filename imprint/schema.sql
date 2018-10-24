@@ -1,5 +1,6 @@
 DROP TABLE IF EXISTS user;
 DROP TABLE IF EXISTS posts;
+DROP TABLE IF EXISTS pages;
 
 CREATE TABLE user (
   id INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -13,5 +14,16 @@ CREATE TABLE posts (
   created TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
   title TEXT NOT NULL,
   url TEXT NOT NULL,
-  body TEXT
+  body TEXT,
+  author_id INTEGER NOT NULL,
+  FOREIGN KEY (author_id) REFERENCES user (id)
+);
+
+CREATE TABLE pages (
+  page_id INTEGER PRIMARY KEY AUTOINCREMENT,
+  page_type TEXT NOT NULL,
+  subheading TEXT NOT NULL,
+  button_text TEXT NOT NULL,
+  author_id INTEGER NOT NULL,
+  FOREIGN KEY (author_id) REFERENCES user (id)
 );
