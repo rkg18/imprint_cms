@@ -9,10 +9,10 @@ from slugify import slugify # generates URL slug
 bp = Blueprint('page', __name__)
 
 @bp.route('/landing-page', methods=('GET','POST'))
-def landing_page():
+def add_page():
     if request.method == 'POST':
         page_type = request.form.get('page-types')
-
+        flash(page_type)
         if page_type == 'landing-page':
             heading = request.form['heading']
             subheading = request.form['subheading']
@@ -36,6 +36,8 @@ def landing_page():
                 db.commit()
 
                 return redirect(url_for('page.new_page',slug=url))
+        elif page_type == 'product-page':
+            return redirect(url_for('hello'))
     else:
         return render_template('page/add_page.html')
 
@@ -52,6 +54,11 @@ def new_page(slug):
     page = get_page(slug)
     return render_template('page/landing-page.html', page=page)
 
-@bp.route('/product-page')
+"""
+@bp.route('/product-page', methods=('GET','POST'))
 def product_page():
-    pass
+    if request.method == 'POST':
+        page_type = request.form.get('page-types')
+    else:
+        return render_template('page/add_page.html')
+"""

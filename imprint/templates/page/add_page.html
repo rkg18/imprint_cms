@@ -18,21 +18,47 @@
       <div id ="landing-page-display">
         <div class="form-group">
           <label for="heading">Heading</label>
-          <input name="heading" id="heading" required>
+          <input name="heading" id="heading">
         </div>
 
         <div class="form-group">
           <label for="subheading">Sub-heading</label>
-          <input name="subheading" id="subheading" required>
+          <input name="subheading" id="subheading">
         </div>
 
         <div class="form-group">
           <label for="button-text">Button Text</label>
-          <input name="button-text" id="button-text" required>
+          <input name="button-text" id="button-text">
         </div>
 
-        <input type="submit" value="Save">
       </div>
+
+      <div id = "product-page-display" style="display:none;">
+
+        <div class="form-group">
+          <label for="product-title"> Product Title </label>
+          <input name="product-title" id="product-title">
+        </div>
+
+        <div class="form-group">
+          <label for="product-description"> Product Description </label>
+          <input name="product-description" id="product-description">
+        </div>
+
+        <label for="product-image"> Product Image </label>
+        <div class="input-group">
+          <div class="custom-file">
+            <input type="file" class="custom-file-input" id="product-image">
+            <label class="custom-file-label" for="inputGroupFile02">Choose file</label>
+          </div>
+          <div class="input-group-append">
+            <span class="input-group-text" id="">Upload</span>
+          </div>
+        </div>
+
+      </div>
+
+      <input type="submit" class="btn btn-primary mt-2" value="Save">
     </form>
   </div>
 </div>
