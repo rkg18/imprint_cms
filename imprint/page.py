@@ -4,7 +4,7 @@ from flask import (
 
 from imprint.db import get_db
 from imprint.auth import login_required
-from slugify import slugify
+from slugify import slugify # generates URL slug
 
 bp = Blueprint('page', __name__)
 
@@ -40,7 +40,6 @@ def landing_page():
         return render_template('page/add_page.html')
 
 @bp.route('/<slug>',methods=('GET','POST'))
-@login_required
 def new_page(slug):
     return render_template('page/page.html')
 

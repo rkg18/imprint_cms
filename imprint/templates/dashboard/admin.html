@@ -25,12 +25,12 @@
     <div class="card-deck mb-3 text-center col-lg-4">
       <div class="card mb-4 shadow-sm">
         <div class="card-header">
-          <h4> Settings </h4>
+          <h4> Add Page </h4>
         </div>
         <div class ="card-body">
-          <p> Edits settings and apperance of the website</p>
+          <p> Add a Landing Page, Product Page, Content Page </p>
         </div>
-        <a href="#" class="button"> Settings </a>
+        <a href="{{ url_for('page.landing_page')}}" class="button"> Add Page </a>
       </div>
     </div>
 
@@ -48,17 +48,17 @@
 
   </div>
 
-  <!-- Row 2 -->
+  <!-- Row 2
   <div class="row">
     <div class="card-deck mb-3 text-center col-lg-4">
       <div class="card mb-4 shadow-sm">
         <div class="card-header">
-          <h4> Add Page </h4>
+          <h4> Settings </h4>
         </div>
         <div class ="card-body">
-          <p> Add a Landing Page, Product Page, Content Page </p>
+          <p> Edits settings and apperance of the website</p>
         </div>
-        <a href="{{ url_for('page.landing_page')}}" class="button"> Add Page </a>
+        <a href="#" class="button"> Settings </a>
       </div>
     </div>
 
@@ -85,7 +85,7 @@
           <a href="#" class="button"> add Feature </a>
         </div>
       </div>
-    </div>
+    </div>-->
 
 </div>
 {% endblock %}
