@@ -2,7 +2,18 @@
 
 {% block content %}
 
-<h1> {{ post['title'] }} </h1>
-<p> {{ post['body'] }} </p>
+<div class="row">
+
+  <div class="col-md-6 offset-md-3 mt-4">
+    <h1> {{ post['title'] }} </h1>
+  </div>
+
+  <div class="col-md-10 offset-md-1 mt-4">
+    <p> {{ post['body'] }} </p>
+  </div>
+</div>
+
+
+
 
 {% endblock %}
