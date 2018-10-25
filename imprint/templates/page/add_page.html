@@ -9,29 +9,30 @@
 
       <div class="form-group"
         <label for="page-type"> Page Types </label>
-        <select class="form-control" name="page-types">
+        <select class="form-control" name="page-types" onchange="checkPageType(this);">
           <option value="landing-page"> Landing Page </option>
           <option value="product-page"> Product Page </option>
         </select>
       </div>
 
-      <div class="form-group">
-        <label for="heading">Heading</label>
-        <input name="heading" id="heading" required>
+      <div id ="landing-page-display">
+        <div class="form-group">
+          <label for="heading">Heading</label>
+          <input name="heading" id="heading" required>
+        </div>
+
+        <div class="form-group">
+          <label for="subheading">Sub-heading</label>
+          <input name="subheading" id="subheading" required>
+        </div>
+
+        <div class="form-group">
+          <label for="button-text">Button Text</label>
+          <input name="button-text" id="button-text" required>
+        </div>
+
+        <input type="submit" value="Save">
       </div>
-
-      <div class="form-group">
-        <label for="subheading">Sub-heading</label>
-        <input name="subheading" id="subheading" required>
-      </div>
-
-      <div class="form-group">
-        <label for="button-text">Button Text</label>
-        <input name="button-text" id="button-text" required>
-      </div>
-
-      <input type="submit" value="Save">
-
     </form>
   </div>
 </div>
