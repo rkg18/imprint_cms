@@ -4,7 +4,7 @@ from flask import (
 
 from imprint.db import get_db
 from imprint.auth import login_required
-import pdb
+from slugify import slugify # generates URL slug
 
 bp = Blueprint('blog', __name__)
 
@@ -25,7 +25,7 @@ def blog_index():
 def add_post():
     if request.method == 'POST':
         title = request.form['title']
-        url = request.form['url']
+        url = slugify(title)
         body = request.form['body']
 
         error = None
