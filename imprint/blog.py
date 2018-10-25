@@ -4,6 +4,7 @@ from flask import (
 
 from imprint.db import get_db
 from imprint.auth import login_required
+import pdb
 
 bp = Blueprint('blog', __name__)
 
@@ -11,8 +12,8 @@ bp = Blueprint('blog', __name__)
 def blog_index():
     db = get_db()
     posts = db.execute(
-        'SELECT post_id, title, url, body, created'
-        ' FROM posts'
+        'SELECT post_id, title, url, body, created, author_id, username'
+        ' FROM posts p JOIN user u ON p.author_id = u.id'
         ' ORDER BY created DESC'
     ).fetchall()
 
@@ -38,7 +39,7 @@ def add_post():
             flash(error)
         else:
             db = get_db()
-            db.execute("INSERT INTO posts (title, body, url) VALUES (?,?,?)",(title,body,url))
+            db.execute("INSERT INTO posts (title, body, url, author_id) VALUES (?,?,?,?)",(title,body,url,g.user['id']))
             db.commit()
 
             return redirect(url_for('blog.blog_index'))
@@ -47,7 +48,7 @@ def add_post():
 
 """ Individual Post Page """
 def get_post(id):
-    post = get_db().execute('SELECT post_id, title, body, url FROM posts WHERE post_id=?',(id,)).fetchone()
+    post = get_db().execute('SELECT id, title, body, created, url, author_id, username FROM posts p JOIN user u on p.author_id = u.id WHERE post_id=?',(id,)).fetchone()
 
     if post is None:
         abort(404, "Post id {0} doesn't exist.".format(id))
