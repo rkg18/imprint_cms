@@ -50,7 +50,7 @@ def get_page(slug):
 @bp.route('/<slug>',methods=('GET','POST'))
 def new_page(slug):
     page = get_page(slug)
-    return render_template('page/page.html', page=page)
+    return render_template('page/landing-page.html', page=page)
 
 @bp.route('/product-page')
 def product_page():
