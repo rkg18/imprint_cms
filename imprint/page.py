@@ -39,9 +39,18 @@ def landing_page():
     else:
         return render_template('page/add_page.html')
 
+def get_page(slug):
+    page = get_db().execute('SELECT heading, subheading, button_text FROM pages WHERE url=?',(slug,)).fetchone()
+
+    if page is None:
+        abort(404, "Page id {0} doesn't exist.".format(id))
+
+    return page
+
 @bp.route('/<slug>',methods=('GET','POST'))
 def new_page(slug):
-    return render_template('page/page.html')
+    page = get_page(slug)
+    return render_template('page/page.html', page=page)
 
 @bp.route('/product-page')
 def product_page():
