@@ -22,8 +22,10 @@ CREATE TABLE posts (
 CREATE TABLE pages (
   page_id INTEGER PRIMARY KEY AUTOINCREMENT,
   page_type TEXT NOT NULL,
+  heading TEXT NOT NULL,
   subheading TEXT NOT NULL,
   button_text TEXT NOT NULL,
   author_id INTEGER NOT NULL,
+  url TEXT NOT NULL,
   FOREIGN KEY (author_id) REFERENCES user (id)
 );
