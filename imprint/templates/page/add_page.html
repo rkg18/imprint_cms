@@ -5,7 +5,7 @@
 {% block content %}
 <div class="row mt-4">
   <div class="col-md-10 offset-md-1">
-    <form method="POST">
+    <form method="POST" enctype='multipart/form-data'>
 
       <div class="form-group"
         <label for="page-type"> Page Types </label>
@@ -48,7 +48,7 @@
         <label for="product-image"> Product Image </label>
         <div class="input-group">
           <div class="custom-file">
-            <input type="file" class="custom-file-input" id="product-image">
+            <input type="file" name="new_file" class="custom-file-input" id="product-image">
             <label class="custom-file-label" for="inputGroupFile02">Choose file</label>
           </div>
         </div>

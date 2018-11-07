@@ -5,6 +5,9 @@ import os
 from flask import Flask
 from flask import render_template
 
+UPLOAD_FOLDER = os.getcwd() + '/imprint/images/'
+ALLOWED_EXTENSIONS = set(['png','jpg','jpeg'])
+
 """ Creates and Configures Application """
 def create_app(test_config=None):
     # Creates Instance & Tells App where files are relative
@@ -15,6 +18,8 @@ def create_app(test_config=None):
         SECRET_KEY='dev',
         DATABASE=os.path.join(app.instance_path, 'imprint.sqlite')
     )
+
+    app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER # Sets configuration for images
 
     # a simple page that says hello
     @app.route('/')
