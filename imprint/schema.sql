@@ -1,6 +1,7 @@
 DROP TABLE IF EXISTS user;
 DROP TABLE IF EXISTS posts;
-DROP TABLE IF EXISTS pages;
+DROP TABLE IF EXISTS product_pages;
+DROP TABLE IF EXISTS landing_pages;
 
 CREATE TABLE user (
   id INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -19,9 +20,18 @@ CREATE TABLE posts (
   FOREIGN KEY (author_id) REFERENCES user (id)
 );
 
-CREATE TABLE pages (
+CREATE TABLE product_pages (
   page_id INTEGER PRIMARY KEY AUTOINCREMENT,
-  page_type TEXT NOT NULL,
+  title TEXT NOT NULL,
+  description TEXT NOT NULL,
+  filename TEXT NOT NULL,
+  author_id INTEGER NOT NULL,
+  url TEXT NOT NULL,
+  FOREIGN KEY (author_id) REFERENCES user (id)
+);
+
+CREATE TABLE landing_pages (
+  page_id INTEGER PRIMARY KEY AUTOINCREMENT,
   heading TEXT NOT NULL,
   subheading TEXT NOT NULL,
   button_text TEXT NOT NULL,
