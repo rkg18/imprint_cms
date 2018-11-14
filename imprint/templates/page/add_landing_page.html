@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+
+{% block title%} New Page {% endblock %}
+
+{% block content %}
+<div class="row mt-4">
+  <div class="col-md-10 offset-md-1">
+    <form method="POST">
+
+      <div id ="landing-page-display">
+        <div class="form-group">
+          <label for="heading">Heading</label>
+          <input name="heading" id="heading">
+        </div>
+
+        <div class="form-group">
+          <label for="subheading">Sub-heading</label>
+          <input name="subheading" id="subheading">
+        </div>
+
+        <div class="form-group">
+          <label for="button-text">Button Text</label>
+          <input name="button-text" id="button-text">
+        </div>
+
+      </div>
+
+      <input type="submit" class="btn btn-primary mt-2" value="Save">
+    </form>
+  </div>
+</div>
+{% endblock %}

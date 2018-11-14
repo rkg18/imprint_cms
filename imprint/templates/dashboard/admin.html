@@ -18,7 +18,7 @@
           <p> Add a Blog Post </p>
         </div>
 
-        <a href="{{ url_for('blog.add_post') }}" class="button"> Add Post </a>
+        <a href="{{ url_for('blog.add_post') }}" class="button mb-3"> Add Post </a>
       </div>
     </div>
 
@@ -30,7 +30,18 @@
         <div class ="card-body">
           <p> Add a Landing Page, Product Page, Content Page </p>
         </div>
-        <a href="{{ url_for('page.add_page')}}" class="button"> Add Page </a>
+          <div class="dropdown show mb-3">
+            <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              Add Page
+            </a>
+
+            <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+              <a class="dropdown-item" href="{{ url_for('page.add_landing_page')}}">Landing Page</a>
+              <a class="dropdown-item" href="{{ url_for('page.add_product_page')}}">Product Page</a>
+              <a class="dropdown-item" href="#">Content Page</a>
+            </div>
+          </div>
+
       </div>
     </div>
 
@@ -42,7 +53,7 @@
         <div class ="card-body">
           <p> Sets up a basic website template to get you started </p>
         </div>
-        <a href="#" class="button"> Quick Start</a>
+        <a href="#" class="button mb-3"> Quick Start</a>
       </div>
     </div>
 
@@ -57,7 +68,7 @@
         <div class ="card-body">
           <p> Edits settings and apperance of the website</p>
         </div>
-        <a href=" {{ url_for('dashboard.settings') }}" class="button"> Settings </a>
+        <a href=" {{ url_for('dashboard.settings') }}" class="button mb-3"> Settings </a>
       </div>
     </div>
   </div>
