@@ -5,7 +5,7 @@ import os
 from flask import Flask
 from flask import render_template
 
-UPLOAD_FOLDER = os.getcwd() + '/imprint/images/'
+UPLOAD_FOLDER = os.getcwd() + '/imprint/static/'
 ALLOWED_EXTENSIONS = set(['png','jpg','jpeg'])
 
 """ Creates and Configures Application """
@@ -50,5 +50,5 @@ def create_app(test_config=None):
     from . import landing_page
     app.register_blueprint(landing_page.bp)
     """
-    
+
     return app

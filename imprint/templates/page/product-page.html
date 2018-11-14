@@ -4,7 +4,7 @@
 
 <div class="row">
   <div class="col-md-6">
-    <img src="{{ product_page['filename'] }}">
+    <img src="{{ url_for('static', filename=product_page['filename']) }}">
   </div>
 
   <div class="col-md-6">

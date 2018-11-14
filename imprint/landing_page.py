@@ -5,10 +5,6 @@ from flask import (
 from imprint.db import get_db
 from imprint.auth import login_required
 from slugify import slugify # generates URL slug
-from werkzeug.utils import secure_filename
-from flask import current_app as app
-import os
-import pdb
 
 bp = Blueprint('landing_page', __name__)
 
@@ -51,7 +47,7 @@ def get_landing_page(slug):
 
     return landing_page
 
-@bp.route('/<slug>',methods=('GET','POST'))
+@bp.route('/landing-page/<slug>',methods=('GET','POST'))
 def new_landing_page(slug):
     landing_page = get_landing_page(slug)
     return render_template('page/landing-page.html', landing_page=landing_page)

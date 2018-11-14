@@ -52,7 +52,7 @@ def get_product_page(slug):
 
     return product_page
 
-@bp.route('/<slug>',methods=('GET','POST'))
+@bp.route('/product-page/<slug>',methods=('GET','POST'))
 def new_product_page(slug):
     product_page = get_product_page(slug)
     return render_template('page/product-page.html', product_page=product_page)
