@@ -7,7 +7,27 @@
 <div class="row">
     <div class="col-lg-12 col-md-12 col-sm-12">
 
-  </div>
+      <select id="fontSize" onchange="changeFontSize()">
+        <option value="12px"> 12 </option>
+        <option value="14px"> 14 </option>
+        <option value="16px"> 16 </option>
+        <option value="20px"> 20 </option>
+        <option value="45px"> 45 </option>
+      </select>
+
+      <br/><br/>
+      <p id="output"> Hello </p>
 </div>
 
+<script>
+
+  function changeFontSize()
+  {
+    var e = document.getElementById("fontSize");
+    var fontValue = e.options[e.selectedIndex].value;
+
+    document.getElementById("output").style.fontSize= fontValue;
+  }
+
+</script>
 {% endblock %}
