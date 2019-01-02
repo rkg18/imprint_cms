@@ -25,35 +25,24 @@
     <div class="card-deck mb-3 text-center col-lg-4">
       <div class="card mb-4 shadow-sm">
         <div class="card-header">
-          <h4> Add Page </h4>
+          <h4> Landing Page </h4>
         </div>
         <div class ="card-body">
-          <p> Add a Landing Page, Product Page, Content Page </p>
+          <p> Set up attractive page with Call-to-Action </p>
         </div>
-          <div class="dropdown show mb-3">
-            <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-              Add Page
-            </a>
-
-            <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-              <a class="dropdown-item" href="#">Landing Page</a>
-              <a class="dropdown-item" href="{{ url_for('product_page.add_product_page')}}">Product Page</a>
-              <a class="dropdown-item" href="#">Content Page</a>
-            </div>
-          </div>
-
+        <a href="{{ url_for('landing_page.add_landing_page')}}" class="button mb-3"> Add Landing Page </a>
       </div>
     </div>
 
     <div class="card-deck mb-3 text-center col-lg-4">
       <div class="card mb-4 shadow-sm">
         <div class="card-header">
-          <h4> Quickstart </h4>
+          <h4> Product Page  </h4>
         </div>
         <div class ="card-body">
-          <p> Sets up a basic website template to get you started </p>
+          <p> Set up a new product  </p>
         </div>
-        <a href="#" class="button mb-3"> Quick Start</a>
+        <a href="{{ url_for('product_page.add_product_page')}}" class="button mb-3"> Add Product Page </a>
       </div>
     </div>
 

@@ -42,13 +42,12 @@ def create_app(test_config=None):
     from . import blog
     app.register_blueprint(blog.bp)
 
-    """ Adding Pages """
+    """ Adding Pages"""
     from . import product_page
     app.register_blueprint(product_page.bp)
 
-    """
+    """ Add Landing Page"""
     from . import landing_page
     app.register_blueprint(landing_page.bp)
-    """
 
     return app
