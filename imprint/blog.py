@@ -79,6 +79,15 @@ def edit_post(id):
 
     return render_template('blog/edit_post.html', post=post)
 
+@bp.route('/blog/<int:id>/delete', methods=('POST',))
+@login_required
+def delete_post(id):
+    get_post(id)
+    db = get_db()
+    db.execute('DELETE FROM posts WHERE post_id = ?', (id,))
+    db.commit()
+    return redirect(url_for('blog.blog_index'))
+
 @bp.route('/blog/<int:id>/<slug>',methods=('GET','POST'))
 @login_required
 def post(id, slug):
