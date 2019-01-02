@@ -5,6 +5,7 @@
 {% block content %}
   {% for post in posts %}
     <article class="post">
+      {% if g.user['id'] == post['author_id'] %}
       <header>
         <div>
           <h1><a href="{{ url_for('blog.post', id=post['post_id'], slug=post['url']) }}"> {{ post['title'] }}</a></h1>
@@ -13,8 +14,9 @@
       </header>
       <p class="body">{{ post['body'] }}</p>
     </article>
+
     {% if not loop.last %}
       <hr>
-    {% endif %}
+    {% endif %}{% endif %}
   {% endfor %}
 {% endblock %}
