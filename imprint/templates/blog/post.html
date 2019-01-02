@@ -3,6 +3,9 @@
 {% block content %}
 
 <div class="row">
+  {% if g.user['id'] == post['author_id'] %}
+    <a class="action" href="{{ url_for('blog.edit_post', id=post['post_id']) }}">Edit</a>
+  {% endif %}
 
   <div class="col-md-6 offset-md-3 mt-4">
     <h1> {{ post['title'] }} </h1>
@@ -11,6 +14,7 @@
   <div class="col-md-10 offset-md-1 mt-4">
     <p id ="post"> {{ post['body'] }} </p>
   </div>
+
 </div>
 
 

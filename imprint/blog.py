@@ -48,12 +48,36 @@ def add_post():
 
 """ Individual Post Page """
 def get_post(id):
-    post = get_db().execute('SELECT id, title, body, created, url, author_id, username FROM posts p JOIN user u on p.author_id = u.id WHERE post_id=?',(id,)).fetchone()
+    post = get_db().execute('SELECT post_id, title, body, created, url, author_id, username FROM posts p JOIN user u on p.author_id = u.id WHERE post_id=?',(id,)).fetchone()
 
     if post is None:
         abort(404, "Post id {0} doesn't exist.".format(id))
 
     return post
+
+""" Edit feature """
+@bp.route('/blog/<int:id>/edit', methods=('GET', 'POST'))
+@login_required
+def edit_post(id):
+    post = get_post(id)
+
+    if request.method == 'POST':
+        title = request.form['title']
+        body = request.form['body']
+        error = None
+
+        if not title:
+            error = 'Title is required'
+
+        if error is not None:
+            flash(error)
+        else:
+            db = get_db()
+            db.execute('UPDATE posts SET title = ?, body = ? WHERE post_id = ?',(title,body,id))
+            db.commit()
+            return redirect(url_for('blog.blog_index'))
+
+    return render_template('blog/edit_post.html', post=post)
 
 @bp.route('/blog/<int:id>/<slug>',methods=('GET','POST'))
 @login_required

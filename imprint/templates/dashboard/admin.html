@@ -6,19 +6,15 @@
 <div class = "container mt-4">
 
   <div class ="row">
-
     <div class="card-deck mb-3 text-center col-lg-4">
       <div class="card mb-4 shadow-sm">
-
         <div class="card-header">
-          <h4> Add Blog Post </h4>
+          <h4> Blog Post </h4>
         </div>
-
         <div class ="card-body">
-          <p> Add a Blog Post </p>
+          <p> Add Post </p>
         </div>
-
-        <a href="{{ url_for('blog.add_post') }}" class="button mb-3"> Add Post </a>
+        <a class="dropdown-item" href="{{ url_for('blog.add_post') }}">Add Blog Post</a>
       </div>
     </div>
 
@@ -61,45 +57,6 @@
       </div>
     </div>
   </div>
-
-  <!-- Row 2
-  <div class="row">
-    <div class="card-deck mb-3 text-center col-lg-4">
-      <div class="card mb-4 shadow-sm">
-        <div class="card-header">
-          <h4> Settings </h4>
-        </div>
-        <div class ="card-body">
-          <p> Edits settings and apperance of the website</p>
-        </div>
-        <a href="#" class="button"> Settings </a>
-      </div>
-    </div>
-
-      <div class="card-deck mb-3 text-center col-lg-4">
-        <div class="card mb-4 shadow-sm">
-          <div class="card-header">
-            <h4> FEATURE </h4>
-          </div>
-          <div class ="card-body">
-            <p> Feature Description HERE </p>
-          </div>
-          <a href="#" class="button"> add Feature </a>
-        </div>
-      </div>
-
-      <div class="card-deck mb-3 text-center col-lg-4">
-        <div class="card mb-4 shadow-sm">
-          <div class="card-header">
-            <h4> FEATURE </h4>
-          </div>
-          <div class ="card-body">
-            <p> Feature Description HERE </p>
-          </div>
-          <a href="#" class="button"> add Feature </a>
-        </div>
-      </div>
-    </div>-->
 
 </div>
 {% endblock %}
