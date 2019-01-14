@@ -8,6 +8,12 @@ from slugify import slugify # generates URL slug
 
 bp = Blueprint('landing_page', __name__)
 
+@bp.route('/landing-page')
+def landing_index():
+    pages = get_db().execute('SELECT url, heading, author_id FROM landing').fetchall()
+
+    return render_template('page/landing_page.html', pages=pages)
+
 """ """"""""""""""""""ADDING LANDING PAGE"""""""""""""""""" """
 
 @bp.route('/add-landing-page', methods=('GET','POST'))
@@ -47,7 +53,7 @@ def get_landing_page(slug):
 
     return landing_page
 
-""" Edit feature """
+""" Edit feature
 @bp.route('/landing-page/<slug>/edit', methods=('GET', 'POST'))
 @login_required
 def edit_landing_page(slug):
@@ -71,6 +77,7 @@ def edit_landing_page(slug):
             return redirect(url_for('landing_page.new_landing_page', slug=slug))
 
     return render_template('page/<slug>/edit_landing_page.html', landing_page=page)
+    """
 
 @bp.route('/landing-page/<slug>',methods=('GET','POST'))
 def new_landing_page(slug):

@@ -8,6 +8,7 @@ from slugify import slugify # generates URL slug
 
 bp = Blueprint('blog', __name__)
 
+# Gets all Posts and Displays them in Blog rell on /blog
 @bp.route('/blog')
 def blog_index():
     db = get_db()
@@ -69,11 +70,14 @@ def edit_post(id):
         if not title:
             error = 'Title is required'
 
+        # Change URL dependent on title change
+        new_url = slugify(title)
+
         if error is not None:
             flash(error)
         else:
             db = get_db()
-            db.execute('UPDATE posts SET title = ?, body = ? WHERE post_id = ?',(title,body,id))
+            db.execute('UPDATE posts SET title = ?, body = ?, url = ? WHERE post_id = ?',(title,body,new_url,id))
             db.commit()
             return redirect(url_for('blog.blog_index'))
 
