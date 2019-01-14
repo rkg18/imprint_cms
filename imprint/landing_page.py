@@ -40,12 +40,37 @@ def add_landing_page():
     return render_template('page/add_landing_page.html')
 
 def get_landing_page(slug):
-    landing_page = get_db().execute('SELECT heading, subheading, button_text FROM landing WHERE url=?',(slug,)).fetchone()
+    landing_page = get_db().execute('SELECT heading, subheading, button_text, page_id, author_id FROM landing WHERE url=?',(slug,)).fetchone()
 
     if landing_page is None:
         abort(404, "URL {0} doesn't exist. [landing]".format(slug))
 
     return landing_page
+
+""" Edit feature """
+@bp.route('/landing-page/<slug>/edit', methods=('GET', 'POST'))
+@login_required
+def edit_landing_page(slug):
+    page = get_landing_page(slug)
+
+    if request.method == 'POST':
+        heading = request.form['heading']
+        subheading = request.form['subheading']
+        button_text = request.form['button-text']
+        error = None
+
+        if not heading:
+            error = 'A heading is required'
+
+        if error is not None:
+            flash(error)
+        else:
+            db = get_db()
+            db.execute('UPDATE landing SET heading = ?, subheading = ?, button_text = ? WHERE slug = ?',(heading,subheading,button_text, slug))
+            db.commit()
+            return redirect(url_for('landing_page.new_landing_page', slug=slug))
+
+    return render_template('page/<slug>/edit_landing_page.html', landing_page=page)
 
 @bp.route('/landing-page/<slug>',methods=('GET','POST'))
 def new_landing_page(slug):
