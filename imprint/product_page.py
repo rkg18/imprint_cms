@@ -14,6 +14,12 @@ bp = Blueprint('product_page', __name__)
 
 ALLOWED_EXTENSIONS = set(['png','jpg','jpeg'])
 
+@bp.route('/product-page')
+def product_index():
+    pages = get_db().execute('SELECT title, url, author_id FROM product').fetchall()
+
+    return render_template('page/product_page.html', pages=pages)
+
 """ """"""""""""""""""ADDING Product PAGE"""""""""""""""""" """
 
 @bp.route('/add-product-page', methods=('GET','POST'))
