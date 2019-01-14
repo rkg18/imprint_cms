@@ -4,6 +4,7 @@
 
 <div class="jumbotron">
   <div class="container">
+
     <h1> {{ landing_page['heading'] }}</h1>
     <h2> {{ landing_page['subheading'] }} </h2>
     <p><a class="btn btn-primary btn-lg" href="#" role="button">{{ landing_page['button_text'] }}</a></p>
@@ -11,4 +12,7 @@
 
 </div>
 
+{% if g.user['id'] == landing_page['author_id'] %}
+  <a class="action" href="{{ url_for('landing_page.edit_landing_page', slug=landing_page['url']) }}">Edit</a>
+{% endif %}
 {% endblock %}

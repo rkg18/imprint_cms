@@ -10,17 +10,17 @@
       <div id ="landing-page-display">
         <div class="form-group">
           <label for="heading">Heading</label>
-          <input name="heading" value = "{{ request.form['heading'] or post['heading']}}" id="heading">
+          <input name="heading" value = "{{ request.form['heading'] or landing_page['heading']}}" id="heading">
         </div>
 
         <div class="form-group">
           <label for="subheading">Sub-heading</label>
-          <input name="subheading" value = "{{ request.form['subheading'] or post['subheading']}}" id="subheading">
+          <input name="subheading" value = "{{ request.form['subheading'] or landing_page['subheading']}}" id="subheading">
         </div>
 
         <div class="form-group">
           <label for="button-text">Button Text</label>
-          <input name="button-text" value = "{{ request.form['button-text'] or post['button-text']}}" id="button-text">
+          <input name="button-text" value = "{{ request.form['button-text'] or landing_page['button_text']}}" id="button-text">
         </div>
 
       </div>

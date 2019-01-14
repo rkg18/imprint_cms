@@ -8,7 +8,7 @@
       {% if g.user['id'] == page['author_id'] %}
       <header>
         <div>
-          <h1><a href="{{ url_for('landing_page.new_landing_page', slug=page['url']) }}"> {{ page['heading'] }}</a></h1>
+          <h1><a href="{{ url_for('landing_page.new_landing_page', id=page['page_id'], slug=page['url'] )}}"> {{ page['heading'] }}</a></h1>
           <h3>{{ page['url']}} </h3>
         </div>
       </header>
