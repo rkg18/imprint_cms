@@ -50,8 +50,40 @@ def add_product_page():
 
     return render_template('page/add_product_page.html')
 
+""" Edit feature """
+@bp.route('/product-page/<slug>/edit', methods=('GET', 'POST'))
+@login_required
+def edit_product_page(slug):
+    page = get_product_page(slug)
+
+    if request.method == 'POST':
+        product_title = request.form['product-title']
+        product_description = request.form['product-description']
+
+        # FILLER FILENAME - CHANGe
+        filename="sample.jpg"
+
+        error = None
+
+        newUrl = slugify(product_title)
+
+        if not product_title:
+            error = 'A heading is required'
+
+        if error is not None:
+            flash(error)
+        else:
+            db = get_db()
+            db.execute("INSERT INTO product (title, description, filename, author_id, url) VALUES (?,?,?,?,?)",(product_title,product_description,filename,g.user['id'], newUrl))
+            db.execute("DELETE FROM product WHERE url=?",(slug,))
+            db.commit()
+
+            return redirect(url_for('product_page.new_product_page',slug=newUrl))
+
+    return render_template('page/edit_product_page.html', product_page=page)
+
 def get_product_page(slug):
-    product_page = get_db().execute('SELECT title, description, filename FROM product WHERE url=?',(slug,)).fetchone()
+    product_page = get_db().execute('SELECT title, description, filename, author_id, url FROM product WHERE url=?',(slug,)).fetchone()
 
     if product_page is None:
         abort(404, "URL {0} doesn't exist. [products]".format(slug))
