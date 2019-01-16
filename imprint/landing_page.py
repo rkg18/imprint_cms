@@ -75,9 +75,11 @@ def edit_landing_page(slug):
             flash(error)
         else:
             db = get_db()
-            db.execute('UPDATE landing SET heading = ?, subheading = ?, button_text = ? WHERE url = ?',(heading,subheading,button_text, slug))
+            db.execute("INSERT INTO landing (heading, subheading, button_text, author_id, url) VALUES (?,?,?,?,?)",(heading,subheading,button_text,g.user['id'], newUrl))
+            db.execute("DELETE FROM landing WHERE url=?",(slug,))
             db.commit()
-            return redirect(url_for('landing_page.new_landing_page', slug=slug))
+
+            return redirect(url_for('landing_page.new_landing_page',slug=newUrl))
 
     return render_template('page/edit_landing_page.html', landing_page=page)
 
