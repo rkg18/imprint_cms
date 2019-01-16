@@ -95,6 +95,16 @@ def new_product_page(slug):
     product_page = get_product_page(slug)
     return render_template('page/product-page.html', product_page=product_page)
 
+# DELETES Landing Page
+@bp.route('/product-page/<slug>/delete', methods=('POST',))
+@login_required
+def delete_page(slug):
+    get_product_page(slug)
+    db = get_db()
+    db.execute('DELETE FROM product WHERE url = ?', (slug,))
+    db.commit()
+    return redirect(url_for('product_page.product_index'))
+
 """ """""""""""""""""""OTHER FUNCTIONS"""""""""""""""""""""" """
 # Determines if there is a valid file extension
 def allowed_file(filename):

@@ -83,6 +83,16 @@ def edit_landing_page(slug):
 
     return render_template('page/edit_landing_page.html', landing_page=page)
 
+# DELETES Landing Page
+@bp.route('/landing-page/<slug>/delete', methods=('POST',))
+@login_required
+def delete_page(slug):
+    get_landing_page(slug)
+    db = get_db()
+    db.execute('DELETE FROM landing WHERE url = ?', (slug,))
+    db.commit()
+    return redirect(url_for('landing_page.landing_index'))
+
 @bp.route('/landing-page/<slug>',methods=('GET','POST'))
 def new_landing_page(slug):
     landing_page = get_landing_page(slug)

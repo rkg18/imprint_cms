@@ -28,5 +28,9 @@
       <input type="submit" class="btn btn-primary mt-2">
     </form>
   </div>
+
+  <form action="{{ url_for('landing_page.delete_page', slug=landing_page['url']) }}" method="post">
+    <input class="danger" type="submit" value="Delete" onclick="return confirm('Are you sure?');">
+  </form>
 </div>
 {% endblock %}
