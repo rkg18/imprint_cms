@@ -16,6 +16,7 @@ CREATE TABLE posts (
   title TEXT NOT NULL,
   url TEXT NOT NULL,
   body TEXT,
+  plain_body TEXT,
   author_id INTEGER NOT NULL,
   FOREIGN KEY (author_id) REFERENCES user (id)
 );
