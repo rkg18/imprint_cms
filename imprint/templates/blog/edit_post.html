@@ -12,7 +12,7 @@
     <input name="title" id="title" class="form-control" value="{{ request.form['title'] or post['title'] }}" required>
 
     <label for="body">Body</label>
-    <textarea name="body" class="form-control" id="body">{{ request.form['body'] or post['body'] }}</textarea>
+    <textarea name="body" rows="15" class="form-control" id="body">{{ request.form['body'] or post['body'] }}</textarea>
 
     <input type="submit" class="btn btn-primary mt-2" value="Save">
   </form>
