@@ -8,8 +8,8 @@
     <div class="col-lg-6">
 
       <!-- Font Size -->
-      <div class="col-lg-12">
-        <select id="fontSize" onchange="changeFontSize()">
+      <div class="col-lg-12 form-group">
+        <select class="form-control" id="fontSize" onchange="changeFontSize()">
           <option value="12px"> 12 </option>
           <option value="14px"> 14 </option>
           <option value="16px"> 16 </option>
@@ -19,39 +19,21 @@
       </div>
 
       <!-- Font Family -->
-      <div class="col-lg-12 mt-4">
-        <select id="fontFamily" onchange="changeFontFamily()">
+      <div class="col-lg-12 mt-4 form-group">
+        <select class="form-control" id="fontFamily" onchange="changeFontFamily()">
           <option value="Times New Roman"> Times New Roman </option>
           <option value="Arial"> Arial </option>
           <option value="Verdana"> Verdana </option>
         </select>
       </div>
 
+      <button type="button" class="btn btn-primary" onclick="changeFontSize()">Save</button>
     </div>
 
     <div class="col-lg-6">
       <p id="output"> Hello, World! </p>
     </div>
+
 </div>
 
-<script>
-
-  function changeFontSize()
-  {
-    var e = document.getElementById("fontSize");
-    var fontValue = e.options[e.selectedIndex].value;
-
-    document.getElementById("output").style.fontSize= fontValue;
-    document.getElementById("post").style.fontSize= fontValue;
-  }
-
-  function changeFontFamily()
-  {
-    var e = document.getElementById("fontFamily");
-    var fontFamily = e.options[e.selectedIndex].value;
-
-    document.getElementById("output").style.fontFamily= fontFamily;
-  }
-
-</script>
 {% endblock %}
