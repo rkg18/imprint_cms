@@ -1,3 +1,0 @@
-SELECT title, description, filename
-FROM product_pages
-WHERE url="hello-world-1";
