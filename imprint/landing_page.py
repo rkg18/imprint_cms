@@ -60,6 +60,8 @@ def get_landing_page(slug):
 def edit_landing_page(slug):
     page = get_landing_page(slug)
 
+    oldHeading = page['heading']
+
     if request.method == 'POST':
         heading = request.form['heading']
         subheading = request.form['subheading']
@@ -75,8 +77,13 @@ def edit_landing_page(slug):
             flash(error)
         else:
             db = get_db()
-            db.execute("INSERT INTO landing (heading, subheading, button_text, author_id, url) VALUES (?,?,?,?,?)",(heading,subheading,button_text,g.user['id'], newUrl))
-            db.execute("DELETE FROM landing WHERE url=?",(slug,))
+
+            if (oldHeading != heading):
+                db.execute("INSERT INTO landing (heading, subheading, button_text, author_id, url) VALUES (?,?,?,?,?)",(heading,subheading,button_text,g.user['id'], newUrl))
+                db.execute("DELETE FROM landing WHERE url=?",(slug,))
+            else:
+                db.execute('UPDATE landing SET subheading = ?, button_text = ? WHERE url = ?',(subheading,button_text,newUrl))
+
             db.commit()
 
             return redirect(url_for('landing_page.new_landing_page',slug=newUrl))
