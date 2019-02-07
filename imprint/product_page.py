@@ -56,6 +56,8 @@ def add_product_page():
 def edit_product_page(slug):
     page = get_product_page(slug)
 
+    oldTitle = page['title']
+
     if request.method == 'POST':
         product_title = request.form['product-title']
         product_description = request.form['product-description']
@@ -74,8 +76,12 @@ def edit_product_page(slug):
             flash(error)
         else:
             db = get_db()
-            db.execute("INSERT INTO product (title, description, filename, author_id, url) VALUES (?,?,?,?,?)",(product_title,product_description,filename,g.user['id'], newUrl))
-            db.execute("DELETE FROM product WHERE url=?",(slug,))
+
+            if(oldTitle != product_title):
+                db.execute("INSERT INTO product (title, description, filename, author_id, url) VALUES (?,?,?,?,?)",(product_title,product_description,filename,g.user['id'], newUrl))
+                db.execute("DELETE FROM product WHERE url=?",(slug,))
+            else:
+                db.execute("UPDATE product SET description = ? WHERE url = ?",(product_description, newUrl))
             db.commit()
 
             return redirect(url_for('product_page.new_product_page',slug=newUrl))
