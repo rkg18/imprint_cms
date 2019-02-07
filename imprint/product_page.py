@@ -58,33 +58,42 @@ def edit_product_page(slug):
 
     oldTitle = page['title']
 
+    db = get_db()
+
     if request.method == 'POST':
         product_title = request.form['product-title']
         product_description = request.form['product-description']
-
-        # FILLER FILENAME - CHANGe
-        filename="sample.jpg"
-
-        error = None
+        oldFilename = page['filename']
 
         newUrl = slugify(product_title)
 
         if not product_title:
             error = 'A heading is required'
 
-        if error is not None:
-            flash(error)
-        else:
-            db = get_db()
-
+        # New File Submission
+        if 'new_file' not in request.files:
             if(oldTitle != product_title):
-                db.execute("INSERT INTO product (title, description, filename, author_id, url) VALUES (?,?,?,?,?)",(product_title,product_description,filename,g.user['id'], newUrl))
+                db.execute("INSERT INTO product (title, description, filename, author_id, url) VALUES (?,?,?,?,?)",(product_title,product_description,oldFilename,g.user['id'], newUrl))
                 db.execute("DELETE FROM product WHERE url=?",(slug,))
             else:
-                db.execute("UPDATE product SET description = ? WHERE url = ?",(product_description, newUrl))
+                db.execute("UPDATE product SET description = ?, filename=? WHERE url = ?",(product_description, oldFilename, newUrl))
             db.commit()
-
-            return redirect(url_for('product_page.new_product_page',slug=newUrl))
+            return redirect(url_for('product_page.new_product_page',slug=newUrl))   
+        else:
+            new_file = request.files['new_file']
+            if new_file.filename == '':
+                flash('No selected file')
+                return redirect(request.url)
+            if new_file and allowed_file(new_file.filename):
+                filename = secure_filename(new_file.filename)
+                new_file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
+                if(oldTitle != product_title):
+                    db.execute("INSERT INTO product (title, description, filename, author_id, url) VALUES (?,?,?,?,?)",(product_title,product_description,filename,g.user['id'], newUrl))
+                    db.execute("DELETE FROM product WHERE url=?",(slug,))
+                else:
+                    db.execute("UPDATE product SET description = ?, filename = ? WHERE url = ?",(product_description, filename, newUrl))
+                db.commit()
+                return redirect(url_for('product_page.new_product_page',slug=newUrl))   
 
     return render_template('page/edit_product_page.html', product_page=page)
 
