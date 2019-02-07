@@ -23,6 +23,11 @@
           <input name="button-text" class="form-control" value = "{{ request.form['button-text'] or landing_page['button_text']}}" id="button-text">
         </div>
 
+        <div class="form-group">
+          <label for="button-url">Button Link</label>
+          <input name="button-url" class="form-control" value = "{{ request.form['button-url'] or landing_page['button_url']}}" id="button-url">
+        </div>
+
       </div>
 
       <input type="submit" class="btn btn-primary mt-2">

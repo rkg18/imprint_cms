@@ -36,6 +36,7 @@ CREATE TABLE landing (
   heading TEXT NOT NULL,
   subheading TEXT NOT NULL,
   button_text TEXT NOT NULL,
+  button_url TEXT,
   author_id INTEGER NOT NULL,
   url TEXT NOT NULL,
   FOREIGN KEY (author_id) REFERENCES user (id)
