@@ -3,19 +3,29 @@
 {% block title %} Landing Pages {% endblock %}
 
 {% block content %}
-  {% for page in pages %}
-    <article class="post">
-      {% if g.user['id'] == page['author_id'] %}
-      <header>
-        <div>
-          <h1><a href="{{ url_for('landing_page.new_landing_page', id=page['page_id'], slug=page['url'] )}}"> {{ page['heading'] }}</a></h1>
-          <h3>{{ page['url']}} </h3>
-        </div>
-      </header>
-    </article>
 
-    {% if not loop.last %}
-      <hr>
-    {% endif %}{% endif %}
-  {% endfor %}
+  
+  <table class="table">
+    <thead>
+      <tr>
+        <th scope="col">Live Page</th>
+        <th scope="col">Heading</th>
+        <th scope="col">URL Slug</th>
+      </tr>
+    </thead>
+    <tbody>
+    
+    {% for page in pages %}
+      {% if g.user['id'] == page['author_id'] %}
+        <tr>
+          <th scope="row"> <a href="{{ url_for('landing_page.new_landing_page', id=page['page_id'], slug=page['url'] )}}"> View </a> </th>
+          <td> {{ page['heading'] }} </td>
+          <td> /{{ page['url']}} </td>
+        </tr>
+      {% endif %}
+    {% endfor %}
+    
+    </tbody>
+  </table>
+  
 {% endblock %}
