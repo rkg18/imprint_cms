@@ -1,17 +1,4 @@
-function checkPageType(that) {
-  if (that.value == 'landing-page')
-  {
-    document.getElementById("landing-page-display").style.display = "block";
-    document.getElementById("product-page-display").style.display = "none";
-  }
-  else if(that.value == 'product-page')
-  {
-    document.getElementById("landing-page-display").style.display = "none";
-    document.getElementById("product-page-display").style.display = "block";
-  }
-}
-
-// Function changes for 'Settings'
+/********* Changes Font Size and Family **********/
 function changeFontSize()
   {
     var e = document.getElementById("fontSize");
@@ -29,7 +16,11 @@ function changeFontSize()
     document.getElementById("output").style.fontFamily= fontFamily;
   }
 
-  function changeFontColor()
+  // Landing Page
+function addLandingPageRow(rowType)
+{
+  if(rowType == "jumbotron")
   {
-    
+
   }
+}
