@@ -13,7 +13,7 @@
 
         <div class="form-group">
           <label for="product-bulletpoints"> Bulletpoint Description</label>
-          <input name="bulletpoint1" class="form-control" placeholder="Bulletpoint #1" id="bulletpoint1">
+          <input name="bulletpoint1" class="form-control" placeholder="Bulletpoint #1" id="bulletpoint1" required>
           <span id="newBulletpoint"></span> 
           <p hidden id="bulletCount">1</p>
           <button type="button" class="btn btn-info mt-2" onclick="addBulletpoint()"> + </button>
@@ -30,6 +30,7 @@
                 y.setAttribute("type","text");
                 y.setAttribute("placeholder","Bulletpoint #" + out);
                 y.setAttribute("class","form-control");
+                y.required = true;
                 
                 document.getElementById("bulletCount").innerHTML = out;
                 y.setAttribute("id", "bulletpoint" + out);

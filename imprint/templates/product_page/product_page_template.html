@@ -9,6 +9,21 @@
 
   <div class="col-md-6">
     <h1> {{ product_page['title']}} </h1>
+    <ul>
+      <li> {{ product_page['bulletpoint1'] }} </li>
+      {% if product_page['bulletpoint2'] %}
+        <li> {{ product_page['bulletpoint2'] }} </li>
+      {% endif %}
+      {% if product_page['bulletpoint3'] %}
+        <li> {{ product_page['bulletpoint3'] }} </li>
+      {% endif %}
+      {% if product_page['bulletpoint4'] %}
+        <li> {{ product_page['bulletpoint4'] }} </li>
+      {% endif %}
+      {% if product_page['bulletpoint5'] %}
+        <li> {{ product_page['bulletpoint5'] }} </li>
+      {% endif %}
+    </ul>
     <p> {{ product_page['description'] }} </p>
   </div>
 

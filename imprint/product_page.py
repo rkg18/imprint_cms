@@ -29,6 +29,11 @@ def add_product_page():
     if request.method == "POST":
         product_title = request.form['product-title']
         product_description = request.form['product-description']
+        bulletpoint1 = request.form.get('bulletpoint1')
+        bulletpoint2 = request.form.get('bulletpoint2')
+        bulletpoint3 = request.form.get('bulletpoint3')
+        bulletpoint4 = request.form.get('bulletpoint4')
+        bulletpoint5 = request.form.get('bulletpoint5')
 
         if 'new_file' not in request.files:
             flash('No file part')
@@ -43,7 +48,7 @@ def add_product_page():
             filename = secure_filename(new_file.filename)
             new_file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
             url = slugify(product_title)
-            db.execute("INSERT INTO product (title, description, filename, author_id, url) VALUES (?,?,?,?,?)",(product_title,product_description,filename,g.user['id'], url))
+            db.execute("INSERT INTO product (title, description, filename, author_id, url, bulletpoint1,bulletpoint2,bulletpoint3,bulletpoint4,bulletpoint5) VALUES (?,?,?,?,?,?,?,?,?,?)",(product_title,product_description,filename,g.user['id'], url, bulletpoint1,bulletpoint2,bulletpoint3,bulletpoint4,bulletpoint5))
             db.commit()
 
             return redirect(url_for('product_page.new_product_page', slug=url))
@@ -98,7 +103,7 @@ def edit_product_page(slug):
     return render_template('product_page/edit_product_page.html', product_page=page)
 
 def get_product_page(slug):
-    product_page = get_db().execute('SELECT title, description, filename, author_id, url FROM product WHERE url=?',(slug,)).fetchone()
+    product_page = get_db().execute('SELECT title, description, filename, author_id, url, bulletpoint1,bulletpoint2,bulletpoint3,bulletpoint4,bulletpoint5 FROM product WHERE url=?',(slug,)).fetchone()
 
     if product_page is None:
         abort(404, "URL {0} doesn't exist. [products]".format(slug))
