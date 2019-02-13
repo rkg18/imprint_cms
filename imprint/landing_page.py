@@ -12,7 +12,7 @@ bp = Blueprint('landing_page', __name__)
 def landing_index():
     pages = get_db().execute('SELECT url, heading, author_id FROM landing').fetchall()
 
-    return render_template('page/landing_page.html', pages=pages)
+    return render_template('landing_page/landing_page_index.html', pages=pages)
 
 """ """"""""""""""""""ADDING LANDING PAGE"""""""""""""""""" """
 
@@ -44,7 +44,7 @@ def add_landing_page():
 
             return redirect(url_for('landing_page.new_landing_page',slug=url))
 
-    return render_template('page/add_landing_page.html')
+    return render_template('landing_page/add_landing_page.html')
 
 def get_landing_page(slug):
     landing_page = get_db().execute('SELECT page_id, heading, subheading, button_text, button_url, url, author_id FROM landing WHERE url=?',(slug,)).fetchone()
@@ -90,7 +90,7 @@ def edit_landing_page(slug):
 
             return redirect(url_for('landing_page.new_landing_page',slug=newUrl))
 
-    return render_template('page/edit_landing_page.html', landing_page=page)
+    return render_template('landing_page/edit_landing_page.html', landing_page=page)
 
 # DELETES Landing Page
 @bp.route('/landing-page/<slug>/delete', methods=('POST',))
@@ -105,4 +105,4 @@ def delete_page(slug):
 @bp.route('/landing-page/<slug>',methods=('GET','POST'))
 def new_landing_page(slug):
     landing_page = get_landing_page(slug)
-    return render_template('page/landing-page.html', landing_page=landing_page)
+    return render_template('landing_page/landing_page_template.html', landing_page=landing_page)

@@ -18,7 +18,7 @@ ALLOWED_EXTENSIONS = set(['png','jpg','jpeg'])
 def product_index():
     pages = get_db().execute('SELECT title, url, author_id FROM product').fetchall()
 
-    return render_template('page/product_page.html', pages=pages)
+    return render_template('product_page/product_page_index.html', pages=pages)
 
 """ """"""""""""""""""ADDING Product PAGE"""""""""""""""""" """
 
@@ -48,7 +48,7 @@ def add_product_page():
 
             return redirect(url_for('product_page.new_product_page', slug=url))
 
-    return render_template('page/add_product_page.html')
+    return render_template('product_page/add_product_page.html')
 
 """ Edit feature """
 @bp.route('/product-page/<slug>/edit', methods=('GET', 'POST'))
@@ -95,7 +95,7 @@ def edit_product_page(slug):
                 db.commit()
                 return redirect(url_for('product_page.new_product_page',slug=newUrl))   
 
-    return render_template('page/edit_product_page.html', product_page=page)
+    return render_template('product_page/edit_product_page.html', product_page=page)
 
 def get_product_page(slug):
     product_page = get_db().execute('SELECT title, description, filename, author_id, url FROM product WHERE url=?',(slug,)).fetchone()
@@ -108,7 +108,7 @@ def get_product_page(slug):
 @bp.route('/product-page/<slug>',methods=('GET','POST'))
 def new_product_page(slug):
     product_page = get_product_page(slug)
-    return render_template('page/product-page.html', product_page=product_page)
+    return render_template('product_page/product_page_template.html', product_page=product_page)
 
 # DELETES Landing Page
 @bp.route('/product-page/<slug>/delete', methods=('POST',))
