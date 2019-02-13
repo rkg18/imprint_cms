@@ -13,6 +13,37 @@
         </div>
 
         <div class="form-group">
+            <label for="product-bulletpoints"> Bulletpoint Description</label>
+            <input name="bulletpoint1" class="form-control" value="{{ request.form['bulletpoint1'] or product_page['bulletpoint1'] }}" id="bulletpoint1" required>
+            <span id="newBulletpoint">
+              {% if product_page['bulletpoint5'] %}
+                <input name="bulletpoint2" class="form-control" value="{{ request.form['bulletpoint2'] or product_page['bulletpoint2'] }}" id="bulletpoint2" required> 
+                <input name="bulletpoint3" class="form-control" value="{{ request.form['bulletpoint3'] or product_page['bulletpoint3'] }}" id="bulletpoint3" required>
+                <input name="bulletpoint4" class="form-control" value="{{ request.form['bulletpoint4'] or product_page['bulletpoint4'] }}" id="bulletpoint4" required>
+                <input name="bulletpoint5" class="form-control" value="{{ request.form['bulletpoint5'] or product_page['bulletpoint5'] }}" id="bulletpoint5" required>
+                <p hidden id="bulletCount">5</p>
+              {% elif product_page['bulletpoint4']%}
+                <input name="bulletpoint2" class="form-control" value="{{ request.form['bulletpoint2'] or product_page['bulletpoint2'] }}" id="bulletpoint2" required> 
+                <input name="bulletpoint3" class="form-control" value="{{ request.form['bulletpoint3'] or product_page['bulletpoint3'] }}" id="bulletpoint3" required>
+                <input name="bulletpoint4" class="form-control" value="{{ request.form['bulletpoint4'] or product_page['bulletpoint4'] }}" id="bulletpoint4" required>
+                <p hidden id="bulletCount">4</p>
+              {% elif product_page['bulletpoint3']%}
+                <input name="bulletpoint2" class="form-control" value="{{ request.form['bulletpoint2'] or product_page['bulletpoint2'] }}" id="bulletpoint2" required> 
+                <input name="bulletpoint3" class="form-control" value="{{ request.form['bulletpoint3'] or product_page['bulletpoint3'] }}" id="bulletpoint3" required>
+                <p hidden id="bulletCount">3</p>
+              {% elif product_page['bulletpoint2']%}
+                <input name="bulletpoint2" class="form-control" value="{{ request.form['bulletpoint2'] or product_page['bulletpoint2'] }}" id="bulletpoint2" required> 
+                <p hidden id="bulletCount">2</p>
+              {% else %}
+                <p hidden id="bulletCount">1</p>
+              {% endif %}
+            </span> 
+            <p hidden id="bulletCount">1</p>
+            <button type="button" class="btn btn-info mt-2" onclick="addBulletpoint()"> + </button>
+            <button type="button" class="btn btn-danger mt-2" onclick="removeBulletpoint()"> - </button>
+          </div>
+
+        <div class="form-group">
           <label for="product-description"> Product Description </label>
           <input name="product-description" class="form-control" id="product-description" value="{{ request.form['description'] or product_page['description']}}">
         </div>

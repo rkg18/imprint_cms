@@ -18,47 +18,8 @@
           <p hidden id="bulletCount">1</p>
           <button type="button" class="btn btn-info mt-2" onclick="addBulletpoint()"> + </button>
           <button type="button" class="btn btn-danger mt-2" onclick="removeBulletpoint()"> - </button>
-          <script>
-            function addBulletpoint()
-            {
-              bulletcount = document.getElementById("bulletCount").innerHTML;
-              out = parseInt(bulletcount) + 1;
-
-              if(out < 6)
-              {
-                var y = document.createElement("input");
-                y.setAttribute("type","text");
-                y.setAttribute("placeholder","Bulletpoint #" + out);
-                y.setAttribute("class","form-control");
-                y.required = true;
-                
-                document.getElementById("bulletCount").innerHTML = out;
-                y.setAttribute("id", "bulletpoint" + out);
-                document.getElementById("newBulletpoint").appendChild(y);
-              }
-              else
-              {
-                alert("Maximum of 5 bullet points is allowed");
-              }
-            }
-
-            function removeBulletpoint()
-            {
-              bulletcount = document.getElementById("bulletCount").innerHTML;
-              out = parseInt(bulletcount);
-              if(out > 1)
-              {
-                var ele = document.getElementById("bulletpoint" + out);
-                ele.parentNode.removeChild(ele);
-                document.getElementById("bulletCount").innerHTML = out-1;
-              }
-              else
-              {
-                alert("You must have at least 1 bullet");
-              }
-            }
-          </script>
         </div>
+        
         <div class="form-group">
           <label for="product-description"> Product Description </label>
           <input name="product-description" class="form-control" id="product-description">
