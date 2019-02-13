@@ -17,7 +17,7 @@
 
         <div class="form-group mt-2">
           <label for="product-title"> Product Title </label>
-          <input name="product-title" class="form-control" id="product-title">
+          <input name="product-title" class="form-control" placeholder="What's your Product's Name?" id="product-title">
         </div>
 
         <div class="form-group">
@@ -31,7 +31,7 @@
         
         <div class="form-group">
           <label for="product-description"> Product Description </label>
-          <input name="product-description" class="form-control" id="product-description">
+          <input name="product-description" placeholder="Tell me more about your product..." class="form-control" id="product-description">
         </div>
 
         <label for="product-image"> Product Image </label>
@@ -40,6 +40,12 @@
             <input type="file" name="new_file" class="custom-file-input" id="product-image">
             <label class="custom-file-label" class="form-control" for="inputGroupFile02">Choose File</label>
           </div>
+        </div>
+
+        <div class="form-group mt-2">
+          <label for="buy-button-text"> Buy Button Text </label>
+          <input name="buy-button-text" placeholder="What is your button's Call-to-Action?" class="form-control" id="buy-button-text" required>
+          <input name="buy-button-link" placeholder="Where should I link to?" class="form-control mt-2" id="buy-button-link">
         </div>
 
       <input type="submit" class="btn btn-primary mt-2">

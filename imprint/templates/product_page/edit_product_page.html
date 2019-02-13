@@ -65,6 +65,12 @@
           </div>
         </div>
 
+        <div class="form-group mt-2">
+          <label for="buy-button-text"> Buy Button Text </label>
+          <input name="buy-button-text" class="form-control" id="buy-button-text" value="{{ request.form['buy-button-text'] or product_page['buy_button_text']}}" required>
+          <input name="buy-button-link" class="form-control mt-2" id="buy-button-link" value="{{ request.form['buy-button-link'] or product_page['buy_button_link']}}">
+        </div>
+
       <input type="submit" class="btn btn-primary mt-2">
     </form>
 

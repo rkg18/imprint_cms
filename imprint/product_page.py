@@ -35,7 +35,9 @@ def add_product_page():
         bulletpoint4 = request.form.get('bulletpoint4')
         bulletpoint5 = request.form.get('bulletpoint5')
         page_layout = request.form['options']
-        
+        buy_button_text = request.form['buy-button-text']
+        buy_button_link = request.form['buy-button-link']
+
         if 'new_file' not in request.files:
             flash('No file part')
             return redirect(request.url)
@@ -49,7 +51,7 @@ def add_product_page():
             filename = secure_filename(new_file.filename)
             new_file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
             url = slugify(product_title)
-            db.execute("INSERT INTO product (title, description, filename, author_id, url, bulletpoint1,bulletpoint2,bulletpoint3,bulletpoint4,bulletpoint5, page_layout) VALUES (?, ?,?,?,?,?,?,?,?,?,?)",(product_title,product_description,filename,g.user['id'], url, bulletpoint1,bulletpoint2,bulletpoint3,bulletpoint4,bulletpoint5, page_layout))
+            db.execute("INSERT INTO product (title, description, filename, author_id, url, bulletpoint1,bulletpoint2,bulletpoint3,bulletpoint4,bulletpoint5, page_layout, buy_button_text, buy_button_link) VALUES (?,?,?,?,?,?,?,?,?,?,?,?, ?)",(product_title,product_description,filename,g.user['id'], url, bulletpoint1,bulletpoint2,bulletpoint3,bulletpoint4,bulletpoint5, page_layout, buy_button_text, buy_button_link))
             db.commit()
 
             return redirect(url_for('product_page.new_product_page', slug=url))
@@ -76,6 +78,8 @@ def edit_product_page(slug):
         bulletpoint4 = request.form.get('bulletpoint4')
         bulletpoint5 = request.form.get('bulletpoint5')
         page_layout = request.form['options']
+        buy_button_text = request.form['buy-button-text']
+        buy_button_link = request.form['buy-button-link']
 
         newUrl = slugify(product_title)
 
@@ -85,10 +89,10 @@ def edit_product_page(slug):
         # New File Submission
         if 'new_file' not in request.files:
             if(oldTitle != product_title):
-                db.execute("INSERT INTO product (title, description, filename, author_id, url, bulletpoint1,bulletpoint2,bulletpoint3,bulletpoint4,bulletpoint5, page_layout) VALUES (?, ?,?,?,?,?,?,?,?,?,?)",(product_title,product_description,oldFilename,g.user['id'], newUrl, bulletpoint1,bulletpoint2,bulletpoint3,bulletpoint4,bulletpoint5, page_layout))
+                db.execute("INSERT INTO product (title, description, filename, author_id, url, bulletpoint1,bulletpoint2,bulletpoint3,bulletpoint4,bulletpoint5, page_layout, buy_button_text,buy_button_link VALUES (?, ?,?,?,?,?,?,?,?,?,?,?,?)",(product_title,product_description,oldFilename,g.user['id'], newUrl, bulletpoint1,bulletpoint2,bulletpoint3,bulletpoint4,bulletpoint5, page_layout, buy_button_text,buy_button_link))
                 db.execute("DELETE FROM product WHERE url=?",(slug,))
             else:
-                db.execute("UPDATE product SET description = ?, bulletpoint1 = ?, bulletpoint2 = ?, bulletpoint3 = ?, bulletpoint4 = ?, bulletpoint5 = ?, filename=?, page_layout=? WHERE url = ?",(product_description, bulletpoint1,bulletpoint2,bulletpoint3,bulletpoint4,bulletpoint5, oldFilename, page_layout, newUrl))
+                db.execute("UPDATE product SET description = ?, bulletpoint1 = ?, bulletpoint2 = ?, bulletpoint3 = ?, bulletpoint4 = ?, bulletpoint5 = ?, filename=?, page_layout=?, buy_button_text=?,buy_button_link=? WHERE url = ?",(product_description, bulletpoint1,bulletpoint2,bulletpoint3,bulletpoint4,bulletpoint5, oldFilename, page_layout, buy_button_text,buy_button_link, newUrl))
             db.commit()
             return redirect(url_for('product_page.new_product_page',slug=newUrl))   
         else:
@@ -100,17 +104,17 @@ def edit_product_page(slug):
                 filename = secure_filename(new_file.filename)
                 new_file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
                 if(oldTitle != product_title):
-                    db.execute("INSERT INTO product (title, description, filename, author_id, url, bulletpoint1,bulletpoint2,bulletpoint3,bulletpoint4,bulletpoint5, page_layout) VALUES (?, ?,?,?,?,?,?,?,?,?,?)",(product_title,product_description,filename,g.user['id'], newUrl, bulletpoint1,bulletpoint2,bulletpoint3,bulletpoint4,bulletpoint5, page_layout))
+                    db.execute("INSERT INTO product (title, description, filename, author_id, url, bulletpoint1,bulletpoint2,bulletpoint3,bulletpoint4,bulletpoint5, page_layout, buy_button_text,buy_button_link) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?)",(product_title,product_description,filename,g.user['id'], newUrl, bulletpoint1,bulletpoint2,bulletpoint3,bulletpoint4,bulletpoint5, page_layout, buy_button_text,buy_button_link))
                     db.execute("DELETE FROM product WHERE url=?",(slug,))
                 else:
-                    db.execute("UPDATE product SET description = ?, bulletpoint1 = ?, bulletpoint2 = ?, bulletpoint3 = ?, bulletpoint4 = ?, bulletpoint5 = ?, filename=?, page_layout=? WHERE url = ?",(product_description, bulletpoint1,bulletpoint2,bulletpoint3,bulletpoint4,bulletpoint5, filename, page_layout, newUrl))
+                    db.execute("UPDATE product SET description = ?, bulletpoint1 = ?, bulletpoint2 = ?, bulletpoint3 = ?, bulletpoint4 = ?, bulletpoint5 = ?, filename=?, page_layout=?, buy_button_text=?,buy_button_link=? WHERE url = ?",(product_description, bulletpoint1,bulletpoint2,bulletpoint3,bulletpoint4,bulletpoint5, filename, page_layout, buy_button_text,buy_button_link, newUrl))
                 db.commit()
                 return redirect(url_for('product_page.new_product_page',slug=newUrl))   
 
     return render_template('product_page/edit_product_page.html', product_page=page)
 
 def get_product_page(slug):
-    product_page = get_db().execute('SELECT title, description, filename, author_id, url, bulletpoint1,bulletpoint2,bulletpoint3,bulletpoint4,bulletpoint5, page_layout FROM product WHERE url=?',(slug,)).fetchone()
+    product_page = get_db().execute('SELECT title, description, filename, author_id, url, bulletpoint1,bulletpoint2,bulletpoint3,bulletpoint4,bulletpoint5, page_layout, buy_button_text,buy_button_link FROM product WHERE url=?',(slug,)).fetchone()
 
     if product_page is None:
         abort(404, "URL {0} doesn't exist. [products]".format(slug))

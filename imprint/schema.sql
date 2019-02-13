@@ -33,6 +33,8 @@ CREATE TABLE product (
   bulletpoint5 TEXT,
   author_id INTEGER NOT NULL,
   page_layout TEXT NOT NULL,
+  buy_button_text TEXT NOT NULL,
+  buy_button_link TEXT,
   url TEXT NOT NULL,
   FOREIGN KEY (author_id) REFERENCES user (id)
 );
