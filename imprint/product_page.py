@@ -98,10 +98,10 @@ def edit_product_page(slug):
                 filename = secure_filename(new_file.filename)
                 new_file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
                 if(oldTitle != product_title):
-                    db.execute("INSERT INTO product (title, description, filename, author_id, url, bulletpoint1,bulletpoint2,bulletpoint3,bulletpoint4,bulletpoint5) VALUES (?,?,?,?,?,?,?,?,?,?)",(product_title,product_description,oldFilename,g.user['id'], newUrl, bulletpoint1,bulletpoint2,bulletpoint3,bulletpoint4,bulletpoint5))
+                    db.execute("INSERT INTO product (title, description, filename, author_id, url, bulletpoint1,bulletpoint2,bulletpoint3,bulletpoint4,bulletpoint5) VALUES (?,?,?,?,?,?,?,?,?,?)",(product_title,product_description,filename,g.user['id'], newUrl, bulletpoint1,bulletpoint2,bulletpoint3,bulletpoint4,bulletpoint5))
                     db.execute("DELETE FROM product WHERE url=?",(slug,))
                 else:
-                    db.execute("UPDATE product SET description = ?, bulletpoint1 = ?, bulletpoint2 = ?, bulletpoint3 = ?, bulletpoint4 = ?, bulletpoint5 = ?, filename=? WHERE url = ?",(product_description, bulletpoint1,bulletpoint2,bulletpoint3,bulletpoint4,bulletpoint5, oldFilename, newUrl))
+                    db.execute("UPDATE product SET description = ?, bulletpoint1 = ?, bulletpoint2 = ?, bulletpoint3 = ?, bulletpoint4 = ?, bulletpoint5 = ?, filename=? WHERE url = ?",(product_description, bulletpoint1,bulletpoint2,bulletpoint3,bulletpoint4,bulletpoint5, filename, newUrl))
                 db.commit()
                 return redirect(url_for('product_page.new_product_page',slug=newUrl))   
 
