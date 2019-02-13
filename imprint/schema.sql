@@ -32,6 +32,7 @@ CREATE TABLE product (
   bulletpoint4 TEXT,
   bulletpoint5 TEXT,
   author_id INTEGER NOT NULL,
+  page_layout TEXT NOT NULL,
   url TEXT NOT NULL,
   FOREIGN KEY (author_id) REFERENCES user (id)
 );

@@ -7,6 +7,15 @@
   <div class="col-md-10 offset-md-1">
     <form method="POST" enctype='multipart/form-data'>
 
+        <div class="btn-group btn-group-toggle form-group" data-toggle="buttons">
+          <label class="btn btn-secondary active">
+            <input type="radio" name="options" id="imageLeft" value="imageLeft" autocomplete="off" checked> Image Left
+          </label>
+          <label class="btn btn-secondary">
+            <input type="radio" name="options" id="imageRight" value="imageRight" autocomplete="off"> Image Right
+          </label>
+        </div>
+
         <div class="form-group">
           <label for="product-title"> Product Title </label>
           <input name="product-title" class="form-control" id="product-title" value="{{ request.form['title'] or product_page['title']}}">

@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="row">
+  <div class="col-md-6">
+    <h1> {{ product_page['title']}} </h1>
+    <ul>
+      <li> {{ product_page['bulletpoint1'] }} </li>
+      {% if product_page['bulletpoint2'] %}
+        <li> {{ product_page['bulletpoint2'] }} </li>
+      {% endif %}
+      {% if product_page['bulletpoint3'] %}
+        <li> {{ product_page['bulletpoint3'] }} </li>
+      {% endif %}
+      {% if product_page['bulletpoint4'] %}
+        <li> {{ product_page['bulletpoint4'] }} </li>
+      {% endif %}
+      {% if product_page['bulletpoint5'] %}
+        <li> {{ product_page['bulletpoint5'] }} </li>
+      {% endif %}
+    </ul>
+    <p> {{ product_page['description'] }} </p>
+  </div>
+
+  <div class="col-md-6">
+      <img style="width:100%;height:100%;object-fit:cover;" src="{{ url_for('static', filename=product_page['filename']) }}">
+    </div>
+
+</div>
+
+{% if g.user['id'] == product_page['author_id'] %}
+  <a class="action" href="{{ url_for('product_page.edit_product_page', slug=product_page['url']) }}">Edit</a>
+{% endif %}
+
+{% endblock %}
