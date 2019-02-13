@@ -26,6 +26,10 @@ def create_app(test_config=None):
     def hello():
         return  render_template('index.html')
 
+    @app.route('/website')
+    def website_index():
+        return render_template('index.html')
+
     """ Adding Database to 'app' """
     from . import db
     db.init_app(app)

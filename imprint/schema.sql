@@ -26,6 +26,11 @@ CREATE TABLE product (
   title TEXT NOT NULL,
   description TEXT NOT NULL,
   filename TEXT NOT NULL,
+  bulletpoint1 TEXT,
+  bulletpoint2 TEXT,
+  bulletpoint3 TEXT,
+  bulletpoint4 TEXT,
+  bulletpoint5 TEXT,
   author_id INTEGER NOT NULL,
   url TEXT NOT NULL,
   FOREIGN KEY (author_id) REFERENCES user (id)

@@ -33,7 +33,7 @@ def add_product_page():
         if 'new_file' not in request.files:
             flash('No file part')
             return redirect(request.url)
-
+        
         new_file = request.files['new_file']
 
         if new_file.filename == '':
