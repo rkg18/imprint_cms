@@ -24,7 +24,7 @@ def create_app(test_config=None):
 
     # Google Maps Configuration
     # you can set key as config
-    app.config['GOOGLEMAPS_KEY'] = "AIzaSyDBFmJSyBLjCwvJB4VjOxkLplpguSX9xkM"
+    app.config['GOOGLEMAPS_KEY'] = "#"
 
     # Initialize the extension
     GoogleMaps(app)
