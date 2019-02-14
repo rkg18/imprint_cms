@@ -5,6 +5,7 @@ import os
 from flask import Flask
 from flask import render_template
 from flask_googlemaps import GoogleMaps
+from imprint.config import *
 
 UPLOAD_FOLDER = os.getcwd() + '/imprint/static/'
 ALLOWED_EXTENSIONS = set(['png','jpg','jpeg'])
@@ -22,11 +23,8 @@ def create_app(test_config=None):
 
     app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER # Sets configuration for images
 
-    # Google Maps Configuration
-    # you can set key as config
-    app.config['GOOGLEMAPS_KEY'] = "#"
-
-    # Initialize the extension
+    # config for google maps
+    app.config['GOOGLEMAPS_KEY'] = config.mapsKey
     GoogleMaps(app)
 
     # a simple page that says hello
@@ -62,7 +60,7 @@ def create_app(test_config=None):
     from . import landing_page
     app.register_blueprint(landing_page.bp)
 
-    """ Add Address/Google Maps"""
+    """ ADdress """
     from . import address
     app.register_blueprint(address.bp)
 
