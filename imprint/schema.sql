@@ -55,5 +55,7 @@ CREATE TABLE locations (
   location_id INTEGER PRIMARY KEY AUTOINCREMENT,
   city TEXT NOT NULL,
   state TEXT NOT NULL,
-  street TEXT NOT NULL
+  street TEXT NOT NULL,
+  author_id INTEGER NOT NULL,
+  FOREIGN KEY (author_id) REFERENCES user (id)
 );

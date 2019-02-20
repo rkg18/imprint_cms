@@ -7,6 +7,7 @@ from flask import render_template
 from flask_googlemaps import GoogleMaps
 from imprint.config import *
 from geocoder import *
+from geopy.geocoders import Nominatim
 
 UPLOAD_FOLDER = os.getcwd() + '/imprint/static/'
 ALLOWED_EXTENSIONS = set(['png','jpg','jpeg'])
