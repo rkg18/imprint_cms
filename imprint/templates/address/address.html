@@ -3,6 +3,9 @@
 {% block title%} Address {% endblock %}
 {% block content %}
 
-{{ mymap.html }}
-
+<div class="row">
+  <div class="col-lg-12">
+      {{googlemap("simple-map", lat, long)}}
+  </div>
+<div>
 {% endblock %}
