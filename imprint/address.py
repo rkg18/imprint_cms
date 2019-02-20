@@ -16,18 +16,16 @@ GoogleMaps(app)
 def indexMap():
     mapVal = get_address()
 
-    full_address = "{}, {}, {}".format(mapVal['street'],mapVal['city'],mapVal['state'])
-    
-    gc = Nominatim(user_agent="Imprint")
-    gc_loc = geolocator.geocode(full_address)
-    print(gc_loc.address)
+    geolocator = Nominatim()
+    full_address = "{} {} {}".format(mapVal['street'],mapVal['city'],mapVal['state'])
+    gc = geolocator.geocode(full_address)
 
     # creating a map in the view
     mymap = Map(
         identifier="view-side",
-        lat=37.4419,
-        lng=-122.1419,
-        markers=[(37.4419, -122.1419)]
+        lat=gc.latitude,
+        lng=gc.longitude,
+        markers=[(gc.latitude, gc.longitude)]
     )
 
     return render_template('address/address.html', mymap=mymap)
@@ -55,8 +53,8 @@ def add_address():
             db = get_db()
             db.execute("INSERT INTO locations (street, city, state, author_id) VALUES (?, ?, ?, ?)", (street,city,state, g.user['id']))
             db.commit()
-            
-            return redirect(url_for('address.indexMap')) 
+
+            return redirect(url_for('address.indexMap'))
 
     return render_template('address/add_address.html')
 
