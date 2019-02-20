@@ -56,6 +56,18 @@
         <a class="btn btn-outline-primary" href=" {{ url_for('dashboard.settings') }}" class="button mb-3"> Settings </a>
       </div>
     </div>
+
+    <div class="card-deck mb-3 text-center col-lg-4">
+      <div class="card mb-4 shadow-sm">
+        <div class="card-header">
+          <h4> Address</h4>
+        </div>
+        <div class ="card-body">
+          <p> Adds a Google Map embedded with provided address </p>
+        </div>
+        <a class="btn btn-outline-primary" href=" {{ url_for('address.add_address') }}" class="button mb-3"> Add Address </a>
+      </div>
+    </div>
   </div>
 
 </div>

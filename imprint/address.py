@@ -9,6 +9,7 @@ bp = Blueprint('address', __name__)
 
 GoogleMaps(app)
 
+# Default Address for Menu Item 'Address'
 @bp.route('/address')
 def indexMap():
     # creating a map in the view
@@ -18,23 +19,10 @@ def indexMap():
         lng=-122.1419,
         markers=[(37.4419, -122.1419)]
     )
-    sndmap = Map(
-        identifier="sndmap",
-        lat=37.4419,
-        lng=-122.1419,
-        markers=[
-          {
-             'icon': 'http://maps.google.com/mapfiles/ms/icons/green-dot.png',
-             'lat': 37.4419,
-             'lng': -122.1419,
-             'infobox': "<b>Hello World</b>"
-          },
-          {
-             'icon': 'http://maps.google.com/mapfiles/ms/icons/blue-dot.png',
-             'lat': 37.4300,
-             'lng': -122.1400,
-             'infobox': "<b>Hello World from other place</b>"
-          }
-        ]
-    )
-    return render_template('address/address.html', mymap=mymap, sndmap=sndmap)
+
+    return render_template('address/address.html', mymap=mymap)
+
+# Add New Address to Geolocation
+@bp.route('/add-address')
+def add_address():
+    return render_template('address/add_address.html')
