@@ -80,14 +80,38 @@ function addJumbotron()
     newHeading.setAttribute("class","form-control");
     newHeading.setAttribute("id", "heading");
     newHeading.setAttribute("type","text");
+    newHeading.setAttribute("placeholder","Enter Heading");
     newHeading.required = true;
     document.getElementById("isJumbotron").appendChild(newHeading);
 
     // Sub-heading
+    var newSubheading = document.createElement("input");
+    newSubheading.setAttribute("name","subheading");
+    newSubheading.setAttribute("class","form-control");
+    newSubheading.setAttribute("id", "subheading");
+    newSubheading.setAttribute("type","text");
+    newSubheading.setAttribute("placeholder","Enter Sub-Heading");
+    newSubheading.required = true;
+    document.getElementById("isJumbotron").appendChild(newSubheading);
 
     // Button Text
+    var newButton = document.createElement("input");
+    newButton.setAttribute("name","button-text");
+    newButton.setAttribute("class","form-control");
+    newButton.setAttribute("id", "button-text");
+    newButton.setAttribute("type","text");
+    newButton.setAttribute("placeholder","Enter Button Text");
+    newButton.required = true;
+    document.getElementById("isJumbotron").appendChild(newButton);
 
     // Button URL
+    var newUrl = document.createElement("input");
+    newUrl.setAttribute("name","button-url");
+    newUrl.setAttribute("class","form-control");
+    newUrl.setAttribute("id", "button-url");
+    newUrl.setAttribute("type","text");
+    newUrl.setAttribute("placeholder","Enter Button URL");
+    document.getElementById("isJumbotron").appendChild(newUrl);
   }
 
 }
