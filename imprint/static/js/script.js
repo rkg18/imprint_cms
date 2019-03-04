@@ -56,3 +56,38 @@ function removeBulletpoint()
     alert("You must have at least 1 bullet");
   }
 }
+
+/****************** Landing Page ***********************/
+function addJumbotron()
+{
+  var isJumbotron = document.getElementById('isJumbotron');
+
+  if(isJumbotron != null)
+  {
+    alert("You can only have 1 Jumbotron element!!!");
+    print(isJumbotron);
+  }
+  else
+  {
+    // Creates Span Id
+    var newJumbotron = document.createElement("span");
+    newJumbotron.setAttribute("id","isJumbotron");
+    document.getElementById("landing-page-display").appendChild(newJumbotron);
+
+    // Heading
+    var newHeading = document.createElement("input");
+    newHeading.setAttribute("name","heading");
+    newHeading.setAttribute("class","form-control");
+    newHeading.setAttribute("id", "heading");
+    newHeading.setAttribute("type","text");
+    newHeading.required = true;
+    document.getElementById("isJumbotron").appendChild(newHeading);
+
+    // Sub-heading
+
+    // Button Text
+
+    // Button URL
+  }
+
+}

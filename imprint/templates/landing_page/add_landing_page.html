@@ -4,10 +4,16 @@
 
 {% block content %}
 <div class="row mt-4">
+
+  <div class="col-md-12">
+      <button type="button" class="btn btn-info mt-2" onclick="addJumbotron()"> Jumbotron </button>
+  </div>
+
   <div class="col-md-10 offset-md-1">
 
     <form method="POST">
       <div id ="landing-page-display">
+
         <div class="form-group">
           <label for="heading">Heading</label>
           <input name="heading" class="form-control" id="heading">
@@ -27,8 +33,8 @@
           <label for="button-url">Button Link</label>
           <input name="button-url" class="form-control" id="button-url">
         </div>
+        
       </div>
-
       <input type="submit" class="btn btn-primary mt-2">
     </form>
 
