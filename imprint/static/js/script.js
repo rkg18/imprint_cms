@@ -74,6 +74,11 @@ function addJumbotron()
     newJumbotron.setAttribute("id","isJumbotron");
     document.getElementById("landing-page-display").appendChild(newJumbotron);
 
+    // Creates Label
+    var lblHeading = document.createElement("h3");
+    lblHeading.innerHTML = "Heading";
+    document.getElementById("isJumbotron").appendChild(lblHeading);
+
     // Heading
     var newHeading = document.createElement("input");
     newHeading.setAttribute("name","heading");
@@ -112,6 +117,47 @@ function addJumbotron()
     newUrl.setAttribute("type","text");
     newUrl.setAttribute("placeholder","Enter Button URL");
     document.getElementById("isJumbotron").appendChild(newUrl);
+
+    // Seperator
+    var sep = document.createElement("hr");
+    document.getElementById("isJumbotron").appendChild(sep);
+  }
+
+}
+
+function addSignup()
+{
+  var isSignup = document.getElementById('isSignup');
+
+  if(isSignup != null)
+  {
+    alert("You can only have 1 email signup");
+  }
+  else
+  {
+    // Creates span element
+    var newSignup = document.createElement("span");
+    newSignup.setAttribute("id","isSignup");
+    document.getElementById("landing-page-display").appendChild(newSignup);
+
+    // Creates Label
+    var lblSignup = document.createElement("h3");
+    lblSignup.innerHTML = "Email Sign-Up";
+    document.getElementById("isSignup").appendChild(lblSignup);
+
+    // Email
+    var newSignup = document.createElement("input");
+    newSignup.setAttribute("name","signup");
+    newSignup.setAttribute("class","form-control");
+    newSignup.setAttribute("id", "signup");
+    newSignup.setAttribute("type","text");
+    newSignup.setAttribute("placeholder","Enter E-Mail Call-to-Action");
+    newSignup.required = true;
+    document.getElementById("isSignup").appendChild(newSignup);
+
+    // Seperator
+    var sep = document.createElement("hr");
+    document.getElementById("isSignup").appendChild(sep);
   }
 
 }
