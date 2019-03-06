@@ -161,3 +161,14 @@ function addSignup()
   }
 
 }
+
+/********* JQuery Move Up and Down ************** */
+$(".moveup").on("click", function() {
+  var elem = $(this).closest("div");
+  elem.prev().before(elem);
+});
+
+$(".movedown").on("click", function() {
+  var elem = $(this).closest("div");
+  elem.next().after(elem);
+});

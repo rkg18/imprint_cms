@@ -48,6 +48,7 @@ CREATE TABLE landing (
   button_url TEXT,
   author_id INTEGER NOT NULL,
   url TEXT NOT NULL,
+  email_cta TEXT,
   FOREIGN KEY (author_id) REFERENCES user (id)
 );
 
