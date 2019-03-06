@@ -49,6 +49,8 @@ CREATE TABLE landing (
   author_id INTEGER NOT NULL,
   url TEXT NOT NULL,
   email_cta TEXT,
+  info_header TEXT, 
+  info_block TEXT,
   FOREIGN KEY (author_id) REFERENCES user (id)
 );
 

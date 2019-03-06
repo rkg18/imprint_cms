@@ -26,7 +26,9 @@ def add_landing_page():
         button_text = request.form['button-text']
         button_url = request.form['button-url']
 
-        email_cta = request.form['signup']
+        email_cta = request.form.get('signup')
+        info_header = request.form.get('info-header')
+        info_block = request.form.get('info-block')
 
         error = None
 
@@ -41,7 +43,7 @@ def add_landing_page():
             flash(error)
         else:
             url = slugify(heading)
-            db.execute("INSERT INTO landing (heading, subheading, button_text, button_url, author_id, url, email_cta) VALUES (?,?,?,?,?,?,?)",(heading,subheading,button_text,button_url,g.user['id'], url, email_cta))
+            db.execute("INSERT INTO landing (heading, subheading, button_text, button_url, author_id, url, email_cta, info_header, info_block) VALUES (?,?,?,?,?,?,?,?,?)",(heading,subheading,button_text,button_url,g.user['id'], url, email_cta, info_header, info_block))
             db.commit()
 
             return redirect(url_for('landing_page.new_landing_page',slug=url))
@@ -49,7 +51,7 @@ def add_landing_page():
     return render_template('landing_page/add_landing_page.html')
 
 def get_landing_page(slug):
-    landing_page = get_db().execute('SELECT page_id, heading, subheading, button_text, button_url, url, author_id, email_cta FROM landing WHERE url=?',(slug,)).fetchone()
+    landing_page = get_db().execute('SELECT page_id, heading, subheading, button_text, button_url, url, author_id, email_cta, info_header, info_block FROM landing WHERE url=?',(slug,)).fetchone()
 
     if landing_page is None:
         abort(404, "URL {0} doesn't exist. [landing]".format(slug))
@@ -73,6 +75,8 @@ def edit_landing_page(slug):
         error = None
 
         email_cta = request.form.get('signup')
+        info_header = request.form.get('info-header')
+        info_block = request.form.get('info-block')
 
         newUrl = slugify(heading)
 
@@ -85,7 +89,7 @@ def edit_landing_page(slug):
             db = get_db()
 
             if (oldHeading != heading):
-                db.execute("INSERT INTO landing (heading, subheading, button_text, button_url, author_id, url, email_cta) VALUES (?,?,?,?,?,?,?)",(heading,subheading,button_text,button_url,g.user['id'], newUrl, email_cta))
+                db.execute("INSERT INTO landing (heading, subheading, button_text, button_url, author_id, url, email_cta, info_header, info_block) VALUES (?,?,?,?,?,?,?,?,?)",(heading,subheading,button_text,button_url,g.user['id'], newUrl, email_cta, info_header, info_block))
                 db.execute("DELETE FROM landing WHERE url=?",(slug,))
             else:
                 db.execute('UPDATE landing SET subheading = ?, button_text = ?, button_url = ? WHERE url = ?',(subheading,button_text,button_url,newUrl))

@@ -8,6 +8,7 @@
     <form method="POST">
 
       <div id ="landing-page-display">
+        
         <div class="form-group">
           <label for="heading">Heading</label>
           <input name="heading" class="form-control" value = "{{ request.form['heading'] or landing_page['heading']}}" id="heading">
@@ -26,6 +27,23 @@
         <div class="form-group">
           <label for="button-url">Button Link</label>
           <input name="button-url" class="form-control" value = "{{ request.form['button-url'] or landing_page['button_url']}}" id="button-url">
+        </div>
+
+        <hr/>
+
+        <div class="form-group">
+            <label for="signup">E-Mail Call-to-Action</label>
+            <input name="signup" class="form-control" value = "{{ request.form['signup'] or landing_page['signup']}}" id="signup">
+        </div>
+
+        <hr/>
+
+        <div class="form-group">
+            <label for="info-header">Info Header</label>
+            <input name="info-header" class="form-control" value = "{{ request.form['info-header'] or landing_page['info_header']}}" id="info-header">
+
+            <label for="info-block">Info Block</label>
+            <input name="info-block" class="form-control" value = "{{ request.form['info-block'] or landing_page['info_block']}}" id="info-block">
         </div>
 
       </div>

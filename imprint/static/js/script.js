@@ -172,3 +172,49 @@ $(".movedown").on("click", function() {
   var elem = $(this).closest("div");
   elem.next().after(elem);
 });
+
+function addInfoBlock()
+{
+  var isInfo = document.getElementById('isInfo');
+
+  if(isInfo != null)
+  {
+    alert("You can only have 1 Info Block");
+  }
+  else
+  {
+    // Creates span element
+    var newInfo = document.createElement("span");
+    newInfo.setAttribute("id","isInfo");
+    document.getElementById("landing-page-display").appendChild(newInfo);
+
+    // Creates Label
+    var lblInfo = document.createElement("h3");
+    lblInfo.innerHTML = "Information Block";
+    document.getElementById("isInfo").appendChild(lblInfo);
+
+    // Info Block
+    var newInfoHeader = document.createElement("input");
+    newInfoHeader.setAttribute("name","info-header");
+    newInfoHeader.setAttribute("class","form-control");
+    newInfoHeader.setAttribute("id", "info-header");
+    newInfoHeader.setAttribute("type","text");
+    newInfoHeader.setAttribute("placeholder","Enter Information Header");
+    newInfoHeader.required = true;
+    document.getElementById("isInfo").appendChild(newInfoHeader);
+
+    // Info Block
+    var newInfoBlock = document.createElement("input");
+    newInfoBlock.setAttribute("name","info-block");
+    newInfoBlock.setAttribute("class","form-control");
+    newInfoBlock.setAttribute("id", "info-block");
+    newInfoBlock.setAttribute("type","text");
+    newInfoBlock.setAttribute("placeholder","Enter Information Block");
+    newInfoBlock.required = true;
+    document.getElementById("isInfo").appendChild(newInfoBlock);
+
+    // Seperator
+    var sep = document.createElement("hr");
+    document.getElementById("isInfo").appendChild(sep);
+  }
+}

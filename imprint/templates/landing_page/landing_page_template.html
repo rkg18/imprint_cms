@@ -28,6 +28,16 @@
             {% endif %}
             <input name="email" class="form-control" placeholder="Enter E-Mail Address" id="email"> <button type="button" class="btn btn-primary">{{ landing_page['email_cta'] }}</button>
         </div>
+
+        <div class="col-sm-12">
+            {% if g.user['id'] == landing_page['author_id'] %}
+              <button type="button" class="btn btn-info mt-2 moveup"> Up </button>
+              <button type="button" class="btn btn-danger mt-2 movedown"> Down </button>
+            {% endif %}
+            <h3> {{ landing_page['info_header'] }} </h3>
+            <p> {{ landing_page['info_block'] }} </p>
+        </div>
+
     </div>
   
   
