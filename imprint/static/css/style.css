@@ -11,3 +11,7 @@
 .blog-header-logo:hover {
   text-decoration: none;
 }
+
+.landing-box {
+  background-color:#CCC;
+}

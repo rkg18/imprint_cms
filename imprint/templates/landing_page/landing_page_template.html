@@ -2,9 +2,6 @@
 
 {% block content %}
 
-
-
-    
 <div class="container">
     <div class="row">
         <div class="col-sm-12">
@@ -18,10 +15,10 @@
               <h1> {{ landing_page['heading'] }}</h1>
               <p> {{ landing_page['subheading'] }} </p>
               <p><a class="btn btn-primary my-2" target="_blank" href="{{ landing_page['button_url'] }}" role="button">{{ landing_page['button_text'] }}</a></p>
-          </div> 
+          </div>
         </div>
 
-        <div class="col-sm-12">
+        <div class="col-sm-12 landing-box">
             {% if g.user['id'] == landing_page['author_id'] %}
               <button type="button" class="btn btn-info mt-2 moveup"> Up </button>
               <button type="button" class="btn btn-danger mt-2 movedown"> Down </button>
@@ -29,7 +26,7 @@
             <input name="email" class="form-control" placeholder="Enter E-Mail Address" id="email"> <button type="button" class="btn btn-primary">{{ landing_page['email_cta'] }}</button>
         </div>
 
-        <div class="col-sm-12">
+        <div class="col-sm-12 landing-box">
             {% if g.user['id'] == landing_page['author_id'] %}
               <button type="button" class="btn btn-info mt-2 moveup"> Up </button>
               <button type="button" class="btn btn-danger mt-2 movedown"> Down </button>
@@ -39,8 +36,8 @@
         </div>
 
     </div>
-  
-  
+
+
 </div>
 
 {% if g.user['id'] == landing_page['author_id'] %}
