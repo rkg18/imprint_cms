@@ -66,4 +66,8 @@ def create_app(test_config=None):
     from . import address
     app.register_blueprint(address.bp)
 
+    """ Live Site """
+    from . import live
+    app.register_blueprint(live.bp)
+
     return app

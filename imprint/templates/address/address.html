@@ -4,8 +4,13 @@
 {% block content %}
 
 <div class="row">
-  <div class="col-lg-12">
-      {{googlemap("simple-map", lat, long)}}
+  <div class="col-lg-6">
+    <p> {{ mapVal['city'] }} </p>
+    <p> {{ mapVal['street'] }} </p>
+    <p> {{ mapVal['state'] }} </p>
   </div>
+  <div class="col-lg-6">
+    {{googlemap("simple-map", lat, long)}}
+</div>
 <div>
 {% endblock %}

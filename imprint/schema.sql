@@ -59,6 +59,6 @@ CREATE TABLE locations (
   city TEXT NOT NULL,
   state TEXT NOT NULL,
   street TEXT NOT NULL,
-  author_id INTEGER NOT NULL,
+  author_id INTEGER NOT NULL UNIQUE,
   FOREIGN KEY (author_id) REFERENCES user (id)
 );

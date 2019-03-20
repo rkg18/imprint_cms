@@ -19,10 +19,8 @@ def indexMap():
     geolocator = Nominatim()
     full_address = "{} {} {}".format(mapVal['street'],mapVal['city'],mapVal['state'])
     gc = geolocator.geocode(full_address)
-    print(gc.latitude)
-    print(gc.longitude)
 
-    return render_template('address/address.html', lat=gc.latitude, long=gc.longitude)
+    return render_template('address/address.html', lat=gc.latitude, long=gc.longitude, mapVal=mapVal)
 
 # Add New Address to Geolocation
 @bp.route('/add-address', methods=('GET','POST'))
