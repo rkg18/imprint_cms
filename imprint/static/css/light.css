@@ -8,14 +8,7 @@ body{
   background-color:#FFF;
 }
 
-a{
-    color:#000;
-}
-
-p{
-    color:#000;
-}
-
-h1, h2, h3, h4, h5 h6{
-    color:#000;
+#lightText
+{
+    color:#000 !important;
 }

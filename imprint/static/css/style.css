@@ -8,6 +8,11 @@ body
   background-color:#FFF;
 }
 
+.lightText
+{
+    color:#000 !important;
+}
+
 .blog-header {
   line-height: 1;
   border-bottom: 1px solid #e5e5e5;
