@@ -10,6 +10,12 @@ bp = Blueprint('dashboard',__name__, url_prefix='/dashboard')
 def admin():
     return render_template('dashboard/admin.html')
 
+"""
 @bp.route('/settings')
 def settings():
     return render_template('dashboard/settings.html')
+"""
+
+@bp.route('/themes')
+def themes():
+    return render_template('dashboard/themes.html')
