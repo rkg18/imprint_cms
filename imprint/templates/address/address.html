@@ -5,9 +5,9 @@
 
 <div class="row">
   <div class="col-lg-6">
-    <p> {{ mapVal['city'] }} </p>
-    <p> {{ mapVal['street'] }} </p>
-    <p> {{ mapVal['state'] }} </p>
+    <h2> Vist our Physical Location Here: </h2>
+    <br/>
+    <p> {{ mapVal['street'] }}, {{ mapVal['city'] }} , {{ mapVal['state'] }} </p>
   </div>
   <div class="col-lg-6">
     {{googlemap("simple-map", lat, long)}}
