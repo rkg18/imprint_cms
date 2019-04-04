@@ -7,22 +7,24 @@
     <thead>
       <tr>
         <th scope="col">Live Page</th>
+        <th scope="col">Edit </th>
         <th scope="col">Heading</th>
         <th scope="col">URL Slug</th>
       </tr>
     </thead>
     <tbody>
-    
+
     {% for page in pages %}
       {% if g.user['id'] == page['author_id'] %}
         <tr>
           <th scope="row"> <a href="{{ url_for('landing_page.new_landing_page', id=page['page_id'], slug=page['url'] )}}"> View </a> </th>
+          <th scope="row"> <a href="{{ url_for('landing_page.edit_landing_page', slug=page['url']) }}"> Edit </a>  </th>
           <td> {{ page['heading'] }} </td>
           <td> /{{ page['url']}} </td>
         </tr>
       {% endif %}
     {% endfor %}
-    
+
     </tbody>
   </table>
 {% endblock %}
