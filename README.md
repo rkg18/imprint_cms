@@ -2,7 +2,9 @@
 
 Seniors Honors Project by Raymond Gines (Due in April 2019)
 
-Emulates the significant features of a modern day CMS such as Wordpress and Magento with adding posts and pages and creating an attractive web page up to modern standards of responsive design.
+The Imprint CMS (Content Management System) aims to emulate the key features of popular existing CMS applications such as Wordpress, Drupal, Magento, etc. This will be a lightweight alternative that can be used to kick start a digital presence by producing landing pages, product pages, and blog posts with ease. Individuals will be able to register and create their own account that will be secured in a database that they can use to login and manage their pages and posts. In addition, they will have the option of changing multiple settings such as the theme and color scheme of their website.
+
+The overall goal is to be able to setup a website with the main features that can dynamically create pages on the fly and edit them as I wish. I want to be able to experience all levels of development from the front-end,back-end, and server-side to create a “significant” web application.
 
 ## Built With
 
@@ -21,7 +23,7 @@ Emulates the significant features of a modern day CMS such as Wordpress and Mage
 pip install requirements.txt
 ```
 
-### How to Run
+## How to Run
 
 To run on Windows 10 open 'Windows Powershell' and navigate to imprint_cms directory:
 
