@@ -8,7 +8,22 @@ body{
   background-color:#FFF;
 }
 
-#lightText
+.nav a
 {
-    color:#000 !important;
+    color: none;
+}
+#dark-card{
+  background-color:none;
+  color:none;
+}
+
+#dark-card a{
+  color:none;
+  background-color: none;
+  border-color: none;
+}
+
+#darkText
+{
+  color:#000;
 }

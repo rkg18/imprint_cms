@@ -17,14 +17,14 @@
 
       <div class="col-4 pt-1">
         {% if g.user %}
-          <p class="darkText lightText"> Hi, {{ g.user['username'] }}! </p>
+          <p id="darkText"> Hi, {{ g.user['username'] }}! </p>
         {% else %}
-          <a class="text-muted darkText lightText" href="{{ url_for('auth.login') }}">Login</a>
+          <a class="text-muted" id="darkText" href="{{ url_for('auth.login') }}">Login</a>
         {% endif %}
       </div>
 
       <div class="col-4 text-center">
-        <a class="blog-header-logo darkText lightText" href="{{ url_for('hello')}}">Imprint</a>
+        <a class="blog-header-logo" id="darkText" href="{{ url_for('hello')}}">Imprint</a>
       </div>
 
       <div class="col-4 d-flex justify-content-end align-items-center">

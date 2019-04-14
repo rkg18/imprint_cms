@@ -8,11 +8,6 @@ body
   background-color:#FFF;
 }
 
-.lightText
-{
-    color:#000 !important;
-}
-
 .blog-header {
   line-height: 1;
   border-bottom: 1px solid #e5e5e5;
@@ -21,6 +16,7 @@ body
 .blog-header-logo {
   font-family: "Playfair Display", Georgia, "Times New Roman", serif;
   font-size: 2.25rem;
+  color:#000;
 }
 
 .blog-header-logo:hover {
@@ -33,4 +29,9 @@ body
 .index-center
 {
   text-align: center;
+}
+
+.nav a
+{
+  color:#000;
 }
