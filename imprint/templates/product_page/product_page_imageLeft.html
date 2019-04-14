@@ -2,7 +2,7 @@
 
 {% block content %}
 
-<div class="row" style='box-shadow:0 0 11px 2px #dfdfdf;'>
+<div class="row mb-4">
   <div class="col-md-6">
     <img style="width:100%;height:100%;object-fit:cover;" src="{{ url_for('static', filename=product_page['filename']) }}">
   </div>
@@ -27,8 +27,8 @@
     <a href="{{ product_page['buy_button_link'] }}" target="_blank"><button type="button" class="btn btn-warning" style="width: 50%;margin-left:25%;margin-right:25%;"> {{ product_page['buy_button_text'] }} </button></a>
   </div>
 </div>
-
-<div class="row">
+<hr/>
+<div class="row mt-4">
   <div class="col-md-12">
       <div style="border-bottom:black solid 1px;"><h2 style="text-align: center;"> Product Description </h2></div>
       <p class ="mt-2" style="margin-left:5%;margin-right:5%;"> {{ product_page['description'] }} </p>
