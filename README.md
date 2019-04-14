@@ -12,7 +12,7 @@ The overall goal is to be able to setup a website with the main features that ca
 * Flask - Web framework for Python
 * HTML - Used to generate Flask templates that holds the content for pages and posts
 * CSS - Styles given templates
-* Javascript - Used to change settings of website such as font size and family
+* Javascript - Used to change settings of website such as font themes and row movement
 * [Bootstrap](https://getbootstrap.com/) - Used for grid framework and responsive design
 
 ## Requirements
@@ -20,7 +20,7 @@ The overall goal is to be able to setup a website with the main features that ca
 * Python 3.x.x or higher
 * Pip Package Manager + Python Libraries
 ```
-pip install requirements.txt
+pip install -f requirements.txt
 ```
 
 ## How to Run

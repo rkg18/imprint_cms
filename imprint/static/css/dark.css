@@ -18,9 +18,9 @@ body{
   color:#FFF;
 }
 
-p, h1, h2, h3, h4, h5, h6, th, tr
+p, h1, h2, h3, h4, h5, h6, th, tr, a
 {
-  color:#FFF;
+  color:#FFF !important;
 }
 
 #dark-card{
@@ -29,7 +29,7 @@ p, h1, h2, h3, h4, h5, h6, th, tr
 }
 
 .card-body a{
-  color: #212529;
+  color: #212529 !important;
   background-color: #f8f9fa;
   border-color: #f8f9fa;
 }
